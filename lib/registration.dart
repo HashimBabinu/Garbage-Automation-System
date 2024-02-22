@@ -12,13 +12,17 @@ class _RegistrationState extends State<Registration> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center, 
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 50),
+            padding: const EdgeInsets.only(top: 10),
             child: Text('Register',style: TextStyle(color:Color(0xFF3DE07E),fontSize:32,fontWeight: FontWeight.bold,),),
-          ),SizedBox(height: 100,),
-          Text('', ),Padding(
-            padding: const EdgeInsets.all(30.0),
+          ),
+          SizedBox(height:130),
+          
+          
+          Padding(
+            padding: const EdgeInsets.only(left: 30,right: 30),
             child: Container(
               child: TextFormField(
               decoration: InputDecoration(border:UnderlineInputBorder(),hintText: ('user_name')),
@@ -26,13 +30,46 @@ class _RegistrationState extends State<Registration> {
             ),
           ),
           Text(' '),Padding(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.only(left: 30,right: 30),
             child: Container(
               child: TextFormField(
               decoration: InputDecoration(border:UnderlineInputBorder(),hintText: ('adress')),
                       ),
             ),
            ),
+           Text(''),Padding(
+             padding: const EdgeInsets.only(left: 30,right: 30),
+             child: Container(
+               child: TextFormField(
+                keyboardType: TextInputType.phone,
+                decoration:InputDecoration(border: UnderlineInputBorder(),hintText: ('ph_no')) ,
+               ),
+             ),
+           ),
+           Text(''),Padding(
+             padding: const EdgeInsets.only(left: 30,right: 30),
+             child: Container(
+               child: TextFormField(
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(border: UnderlineInputBorder(),hintText: ('mail id')),
+               ),
+             ),
+           ),
+           Text(''),Padding(
+             padding: const EdgeInsets.only(left: 30,right: 30),
+             child: Container(
+               child: TextFormField(
+                decoration:InputDecoration(border: UnderlineInputBorder(),hintText: ('password')) ,
+               ),
+             ),
+           ),
+           Text('Already have account?Login',style: TextStyle(decoration: TextDecoration.underline),),
+           Padding(
+             padding: const EdgeInsets.only(top:200),
+             child: ElevatedButton(onPressed: (){}, child:Text('SIGN UP'),),
+           ),
+
+
         
     
         ],
