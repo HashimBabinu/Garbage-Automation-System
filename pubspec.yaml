@@ -68,6 +68,7 @@ flutter:
     - picture/box.jpg
     - picture/papper bag.jpg
     - picture/foodwaste.jpg
+    - picture/userprofile2.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

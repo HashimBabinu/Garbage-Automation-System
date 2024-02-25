@@ -9,6 +9,7 @@ import 'package:flutter_application_4/registration.dart';
 import 'package:flutter_application_4/registrationdriver.dart';
 import 'package:flutter_application_4/registrationrecycle.dart';
 import 'package:flutter_application_4/sample.dart';
+import 'package:flutter_application_4/userprofile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  Public(),
+      home:  Userprofile(),
     );
   }
 }

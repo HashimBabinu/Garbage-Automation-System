@@ -18,11 +18,11 @@ class _PublicState extends State<Public> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0), // Adjust padding as needed
+                padding: const EdgeInsets.all(8.0), 
                 child: Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: Border.all(color: Colors.black), // Add border for better visibility
+                    border: Border.all(color: Colors.black), 
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
