@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class Login3 extends StatefulWidget {
+  const Login3({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Login3> createState() => _Login3State();
 }
 
-class _LoginState extends State<Login> {
+class _Login3State extends State<Login3> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,9 +16,9 @@ class _LoginState extends State<Login> {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(child: Image.asset('picture/trash.png')),
+            child: Container(child: Image.asset('picture/recycle.jpg')),
           ),
-          Text(''),Padding(
+           Text(''),Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
               decoration: InputDecoration(border: UnderlineInputBorder(),hintText: ('user_name')),
@@ -27,16 +27,17 @@ class _LoginState extends State<Login> {
            Text(''),Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(
-              decoration: InputDecoration(border: UnderlineInputBorder(),hintText: ('password'))
+              decoration: InputDecoration(border: UnderlineInputBorder(),hintText: ('password')),
             ),
           ),
-          Padding(
+           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(child: ElevatedButton(onPressed: (){}, child: Text('LOGIN'))),
           ),
 
         ],
-      ), 
+      ),
+
     );
   }
 }

@@ -21,7 +21,7 @@ class _RegistrationState extends State<Registration> {
           SizedBox(height:130),
           
           
-          Padding(
+          Text(''),Padding(
             padding: const EdgeInsets.only(left: 30,right: 30),
             child: Container(
               child: TextFormField(
@@ -50,8 +50,7 @@ class _RegistrationState extends State<Registration> {
              padding: const EdgeInsets.only(left: 30,right: 30),
              child: Container(
                child: TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(border: UnderlineInputBorder(),hintText: ('mail id')),
+                decoration: InputDecoration(border:UnderlineInputBorder(),hintText: ('mail id')),
                ),
              ),
            ),
@@ -66,7 +65,7 @@ class _RegistrationState extends State<Registration> {
            Text('Already have account?Login',style: TextStyle(decoration: TextDecoration.underline),),
            Padding(
              padding: const EdgeInsets.only(top:200),
-             child: ElevatedButton(onPressed: (){}, child:Text('SIGN UP'),),
+             child: ElevatedButton(onPressed: (){}, child:Text('SIGN UP',),),
            ),
 
 
