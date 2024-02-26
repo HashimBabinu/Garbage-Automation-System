@@ -13,13 +13,15 @@ class _MyWidgetState extends State<MyWidget> {
     return 
 
  Scaffold(
-        appBar: AppBar(
-          title: Text('Underline Text Example'),
+       appBar: AppBar(
+          title: Text('Underlined Text Example'),
         ),
         body: Center(
           child: Container(
+            width: double.infinity,
             child: Text(
-              'This text is underlined',
+              'User Name',
+              textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 24, // Adjust the font size as needed
               ),
@@ -27,14 +29,15 @@ class _MyWidgetState extends State<MyWidget> {
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                  color: Colors.black, // Change the color as needed
-                  width: 1.0, // Adjust the thickness as needed
+                  color: Colors.black,
+                  width: 1.0, // Adjust the width as needed
                 ),
               ),
             ),
           ),
         ),
       );
+
     
   }
 }

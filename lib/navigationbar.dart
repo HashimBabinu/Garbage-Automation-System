@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/userprofile.dart';
 
 class Mynavigationbar extends StatefulWidget {
   const Mynavigationbar({super.key});
@@ -12,6 +13,7 @@ class _MynavigationbarState extends State<Mynavigationbar> {
   int _selectedIndex=0;
 
   static const List<dynamic>_widgetoptions=[
+    Userprofile()
 
   ];
 

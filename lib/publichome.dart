@@ -32,10 +32,15 @@ class _PublicState extends State<Public> {
               ),
           
             Center(child: Container(
-              child: Image.asset('picture/logo.png',
-               width:200, 
-               height:200,),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset('picture/logo.png',
+                 width:200, 
+                 height:200,),
+              ),
             )),
+            Icon(Icons.notifications)
+           
             ],
 
             
