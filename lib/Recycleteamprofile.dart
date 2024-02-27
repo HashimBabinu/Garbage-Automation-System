@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Userprofile extends StatefulWidget {
-  const Userprofile({super.key});
+class RecycleProfile extends StatefulWidget {
+  const RecycleProfile({super.key});
 
   @override
-  State<Userprofile> createState() => _UserprofileState();
+  State<RecycleProfile> createState() => _RecycleProfileState();
 }
 
-class _UserprofileState extends State<Userprofile> {
+class _RecycleProfileState extends State<RecycleProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +17,7 @@ class _UserprofileState extends State<Userprofile> {
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('picture/userprofile2.png'),
+              image: AssetImage('picture/recycle profile.jpg'),
               fit: BoxFit.fitWidth,
             ),
           ),
@@ -57,7 +57,7 @@ class _UserprofileState extends State<Userprofile> {
                   shape: BoxShape.rectangle,
                   border: Border.all(color: Colors.black),
                   borderRadius: BorderRadius.circular(10),
-                   color: Colors.white,
+                  color: Colors.white,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -71,15 +71,15 @@ class _UserprofileState extends State<Userprofile> {
             padding: const EdgeInsets.only(right: 250),
             child: Column(
               children: [
-                Text('user name',style: TextStyle(fontWeight: FontWeight.bold),),
-                Text('address',style: TextStyle(fontWeight: FontWeight.bold),),
-                Text('ph_no',style: TextStyle(fontWeight: FontWeight.bold),),
-                Text('mail id',style: TextStyle(fontWeight: FontWeight.bold),),
+                Text('           Company Name:',style: TextStyle(fontWeight: FontWeight.bold),),
+                
+                Text('Number:',style: TextStyle(fontWeight: FontWeight.bold),),
+                Text('Mail id:',style: TextStyle(fontWeight: FontWeight.bold),),
               ],
             ),
           ),
         ],
       ),
-    ]));
+    ]));;;
   }
 }

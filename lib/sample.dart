@@ -1,45 +1,36 @@
 import 'package:flutter/material.dart';
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
+class Sample extends StatefulWidget {
+  const Sample({super.key});
 
   @override
-  State<MyWidget> createState() => _MyWidgetState();
+  State<Sample> createState() => _SampleState();
 }
 
-class _MyWidgetState extends State<MyWidget> {
+class _SampleState extends State<Sample> {
   @override
   Widget build(BuildContext context) {
-    return 
-
- Scaffold(
-       appBar: AppBar(
-          title: Text('Underlined Text Example'),
-        ),
-        body: Center(
-          child: Container(
-            width: double.infinity,
-            child: Text(
-              'User Name',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 24, // Adjust the font size as needed
-              ),
-            ),
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                  color: Colors.black,
-                  width: 1.0, // Adjust the width as needed
-                ),
-              ),
+    return Scaffold(
+        body: ListView.builder(
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Card(
+            elevation: 5,
+            color: Colors.amber,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(child: Text('data')),
             ),
           ),
-        ),
-      );
-
-    
+        );
+        return ListTile(
+          onTap: () {},
+          title: Text('Name'),
+        subtitle: Text('Address'),
+        );
+      },
+    ));
   }
 }
-
-    
