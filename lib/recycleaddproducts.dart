@@ -11,37 +11,37 @@ class _AddProductState extends State<AddProduct> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:  Column(
+      appBar: AppBar(
+        leading: Icon(Icons.arrow_back,size: 30,), 
+      ),
+      body: Column(
         children: [
-          Row(
-                children: [
-                 
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 200),
-                    child: Container(child: Icon(Icons.arrow_back,size: 30,)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 200,left: 70),
-                    child: SizedBox(
-                        child: Container(
-                            child: Image.asset(
-                      'picture/logo.png',
-                      height: 200,
-                      width: 200,
-                    ))),
-                  ),
-                   Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                     children: [
-                       Padding(
-                        padding: const EdgeInsets.only(right: 200),
-                        child: Container(child: SizedBox(child: Image.asset('picture/papper cup.png',height: 100,width: 100,))),
-                                         ),
-                     ],
-                   ),
-                  
-                ],
-              ),
+          
+          SizedBox(
+              height: 250,
+              width: 250,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 110),
+                child: Image.asset('picture/logo.png'),
+              )),
+          SizedBox(
+              height: 300,
+              width: 300,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 100),
+                child: Image.asset('picture/jar.png'),
+              )),
+          Text(''),
+          TextFormField(
+            decoration: InputDecoration(border: UnderlineInputBorder(),hintText: ('Product Name')),
+          ),
+          Text('Dercription'),TextFormField(
+            decoration: InputDecoration(border: OutlineInputBorder(),hintText: ('add descrition')),
+          ),
+          Text(''),TextFormField(
+            decoration: InputDecoration(border: OutlineInputBorder(),hintText: ('add price')),
+
+          )
 
         ],
       ),

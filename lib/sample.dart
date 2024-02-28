@@ -11,7 +11,7 @@ class _SampleState extends State<Sample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView.builder(
+       body: ListView.builder(
       itemCount: 10,
       itemBuilder: (context, index) {
         return Padding(
@@ -32,5 +32,6 @@ class _SampleState extends State<Sample> {
         );
       },
     ));
+    
   }
 }

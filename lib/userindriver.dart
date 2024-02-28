@@ -26,26 +26,54 @@ class _UserdState extends State<Userd> {
               ),
             ],
           ),
-           ListView.builder(
-            itemCount: 10,
-      itemBuilder: (context, index){
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Card(
-            elevation: 5,
-            color: Color.fromARGB(255, 35, 188, 94),child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: InkWell(
-              onTap: () {},
-              child: Text('Name')),
-          ),),
-        );
-
-      }
-
-
-           )
-         
+          Expanded(
+            child: ListView.builder(
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Card(
+                      elevation: 5,
+                      color: Color.fromARGB(255, 35, 188, 94),
+                      child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ListTile(
+                            title:
+                                    Text('Name:'),
+                                    subtitle:
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Column(
+                                          children: [
+                                            Text('Address'),
+                                             Text('Number:'),
+                                        Text('Mail id:'),
+                                        Text('Pin:')
+                                        
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    trailing: 
+                                      
+                                      Column(
+                                        children: [
+                                          Icon(Icons.check_circle_outline_rounded),
+                                           Icon(Icons.access_time),
+                                           Icon(Icons.cancel_presentation_sharp),
+                                          
+                                        ],
+                                      ),
+                                    
+                                  
+                                   
+                                
+                          )),
+                    ),
+                  );
+                }),
+          ),
         ],
       ),
     );
