@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 
-class AdminWarningDriver extends StatefulWidget {
-  const AdminWarningDriver({super.key});
+class AdminWarningRecycle extends StatefulWidget {
+  const AdminWarningRecycle({super.key});
 
   @override
-  State<AdminWarningDriver> createState() => _AdminWarningDriverState();
+  State<AdminWarningRecycle> createState() => _AdminWarningRecycleState();
 }
 
-class _AdminWarningDriverState extends State<AdminWarningDriver> {
+class _AdminWarningRecycleState extends State<AdminWarningRecycle> {
   @override
   Widget build(BuildContext context) {
-    return 
-      Scaffold(
+    return Scaffold(
       body: Column(
         children: [
           Row(
@@ -80,8 +79,9 @@ class _AdminWarningDriverState extends State<AdminWarningDriver> {
           ),
           Container(child: Text('')),Padding(
             padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
+            child: TextFormField(maxLines: null,
               decoration:InputDecoration(hintText: ('type complaint'),
+              
               border: OutlineInputBorder()),
               
             ),
@@ -94,7 +94,5 @@ class _AdminWarningDriverState extends State<AdminWarningDriver> {
         ],
       ),
     );
-
-    
   }
 }

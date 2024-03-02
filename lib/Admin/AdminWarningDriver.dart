@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 
-class RecycleComplaints extends StatefulWidget {
-  const RecycleComplaints({super.key});
+class AdminWarningDriver extends StatefulWidget {
+  const AdminWarningDriver({super.key});
 
   @override
-  State<RecycleComplaints> createState() => _RecycleComplaintsState();
+  State<AdminWarningDriver> createState() => _AdminWarningDriverState();
 }
 
-class _RecycleComplaintsState extends State<RecycleComplaints> {
+class _AdminWarningDriverState extends State<AdminWarningDriver> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-       body: Column(
+    return 
+      Scaffold(
+      body: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -40,7 +41,7 @@ class _RecycleComplaintsState extends State<RecycleComplaints> {
                 padding: const EdgeInsets.only(right: 80),
                 child: Container(
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 45, top: 7),
+                    padding: const EdgeInsets.only(left: 45,top: 7),
                     child: Text(
                       'Driver',
                       style: TextStyle(
@@ -53,11 +54,12 @@ class _RecycleComplaintsState extends State<RecycleComplaints> {
                       color: Color(0xFF3DE07E),
                       border: Border.all(color: Colors.black, width: 1),
                       borderRadius: BorderRadius.circular(10)),
+                
                 ),
               ),
               Container(
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 22, top: 7),
+                  padding: const EdgeInsets.only(left: 22,top: 7),
                   child: Text(
                     'Recycle Team',
                     style: TextStyle(
@@ -70,49 +72,29 @@ class _RecycleComplaintsState extends State<RecycleComplaints> {
                     color: Color(0xFF3DE07E),
                     border: Border.all(color: Colors.black, width: 1),
                     borderRadius: BorderRadius.circular(10)),
+                    
+
               ),
+
             ],
           ),
-          Expanded(
-            child: ListView.builder(
-                itemCount: 3,
-                itemBuilder: (context, index) {
-                  // return Padding(
-                  //   padding: const EdgeInsets.all(8.0),
-                  //   child: Container(
-                  //     child: Text(
-                  //         'I would like to report a missed waste pickup for my household located at marutha. Our scheduled pickup day was 17/03/2000, but unfortunately, the waste collection truck did not pass by our area today. We had placed our bins out on time according to the schedule provided by the municipality, but it seems they were not collected'),
-                  //     // width: 100,
-                  //     // height: 150,
-                  //     decoration: BoxDecoration(
-                  //         color: Colors.white,
-                  //         border: Border.all(color: Colors.black, width: 1),
-                  //         borderRadius: BorderRadius.circular(10),
-                  //         ),
-
-                  //   ),
-
-                  // );
-                  return Card(
-                    elevation: 5,
-                    color: Color.fromARGB(255, 255, 255, 255),
-                    child: ListTile(
-                      title: Text(
-                          'Complaint against recycle team'),
-                      trailing: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                              primary: Color(0xFF3DE07E)),
-                          child: Text(
-                            'Reply',
-                            style: TextStyle(color: Colors.black),
-                          )),
-                    ),
-                  );
-                }),
+          Container(child: Text('')),Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextFormField(maxLines: null,
+              decoration:InputDecoration(hintText: ('type complaint'),
+              border: OutlineInputBorder()),
+              
+            ),
           ),
+          Align(alignment:Alignment.bottomRight ,
+          child: ElevatedButton(onPressed: (){},
+          style: ElevatedButton.styleFrom(
+                              primary: Color(0xFF3DE07E)), child: Text('sent',
+                              style: TextStyle(color: Colors.black),))),
         ],
       ),
     );
+
+    
   }
 }

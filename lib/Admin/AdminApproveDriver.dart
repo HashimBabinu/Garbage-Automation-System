@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/Admin/AdminHome.dart';
 
 class ApproveDriver extends StatefulWidget {
   const ApproveDriver({super.key});
@@ -11,11 +12,18 @@ class _ApproveDriverState extends State<ApproveDriver> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       body: Column(
+      body: Column(
         children: [
           Row(
             children: [
-              Icon(Icons.arrow_back),
+              InkWell(onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return AdminHome();
+                },));
+              },
+                child: Container(child: Icon(Icons.arrow_back)
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 40),
                 child: Container(
@@ -39,7 +47,7 @@ class _ApproveDriverState extends State<ApproveDriver> {
                           padding: const EdgeInsets.all(8.0),
                           child: ListTile(
                             title: Text(
-                              'Dileep', 
+                              'Dileep',
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                             subtitle: Row(
@@ -47,7 +55,6 @@ class _ApproveDriverState extends State<ApproveDriver> {
                               children: [
                                 Column(
                                   children: [
-                                    
                                     Text('999999999999',
                                         style: TextStyle(
                                             fontStyle: FontStyle.italic,
@@ -62,7 +69,6 @@ class _ApproveDriverState extends State<ApproveDriver> {
                             trailing: Column(
                               children: [
                                 Icon(Icons.task_alt),
-                              
                                 Icon(Icons.close),
                               ],
                             ),

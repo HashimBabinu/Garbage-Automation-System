@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/Admin/AdminHome.dart';
 
 class Registration extends StatefulWidget {
   const Registration({super.key});
@@ -65,7 +66,11 @@ class _RegistrationState extends State<Registration> {
            Text('Already have account?Login',style: TextStyle(decoration: TextDecoration.underline),),
            Padding(
              padding: const EdgeInsets.only(top:200),
-             child: ElevatedButton(onPressed: (){}, child:Text('SIGN UP',),),
+             child: ElevatedButton(onPressed: (){
+              Navigator.push(context,MaterialPageRoute(builder: (context) {
+                return AdminHome();
+              }));
+             }, child:Text('SIGN UP',),),
            ),
 
 

@@ -45,7 +45,15 @@ class _DriverState extends State<Driver> {
                  Text('Status',style: TextStyle(fontWeight: FontWeight.w700,fontSize: 34),),
                ],
              ),
-             
+            
+    Divider( 
+      color: Colors.black, 
+      height: 20, 
+      thickness: 1, 
+      indent: 0, 
+      endIndent: 0, 
+    ),
+     SizedBox(height: 35),
              Row(
               mainAxisAlignment: MainAxisAlignment.center,
                children: [            

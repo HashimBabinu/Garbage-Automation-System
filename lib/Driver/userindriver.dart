@@ -42,22 +42,23 @@ class _UserdState extends State<Userd> {
                                     Text('Name:'),
                                     subtitle:
                                     Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Column(
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
                                           children: [
-                                            Text('Address'),
-                                             Text('Number:'),
-                                        Text('Mail id:'),
-                                        Text('Pin:')
-                                        
+                                            Column(
+                                              children: [
+                                                Text('Address'),
+                                                 Text('Number:'),
+                                            Text('Mail id:'),
+                                            Text('Pin:')
+                                            
+                                              ],
+                                            ),
                                           ],
-                                        ),
-                                      ],
-                                    ),
-                                    trailing: 
-                                      
-                                      Column(
+                                        ), 
+                                         Column(
                                         children: [
                                           Icon(Icons.check_circle_outline_rounded),
                                            Icon(Icons.access_time),
@@ -65,6 +66,10 @@ class _UserdState extends State<Userd> {
                                           
                                         ],
                                       ),
+                                      ],
+                                    ),
+                                   
+                                     
                                     
                                   
                                    

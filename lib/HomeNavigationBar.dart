@@ -51,7 +51,7 @@ class _MynavigationbarState extends State<Mynavigationbar> {
         ],
         type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromARGB(255, 255, 255, 255),
+        selectedItemColor: Color.fromARGB(255, 171, 119, 119),
         iconSize: 40,
         onTap: _onItemTapped,
         elevation: 5,),

@@ -48,7 +48,7 @@ class _RecycleState extends State<Recycle> {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 30),
                                     child: Container(child: Icon(Icons.add)),
-                                  ),
+                                  ), 
                                ],
                              ),
                              

@@ -32,7 +32,18 @@ class _LoginState extends State<Login> {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(child: ElevatedButton(onPressed: (){}, child: Text('LOGIN'))),
+            child: Container(child: ElevatedButton(onPressed: (){}, child: Text('LOGIN',style: TextStyle(color: Color(0xFF3DE07E)),))),
+          ),
+          Text('or'),
+          ElevatedButton.icon(
+              onPressed: () {
+                
+              },
+              icon: Icon(Icons.g_mobiledata,color:Color(0xFF4285F4) ),
+              label: Text('Continue with Google',style: TextStyle(color: Color(0xFF4285F4)),),
+              style: ElevatedButton.styleFrom(
+                primary: const Color.fromARGB(255, 255, 255, 255), 
+              ),
           ),
 
         ],

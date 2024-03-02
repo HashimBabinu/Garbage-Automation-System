@@ -64,7 +64,7 @@ class _OrderState extends State<Order> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontStyle: FontStyle.italic),
-                                    )
+                                    ),
                                   ],
                                 ),
                               ],
