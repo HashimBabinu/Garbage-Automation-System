@@ -15,9 +15,13 @@ import 'package:flutter_application_4/Admin/AdminWarningRecycle.dart';
 import 'package:flutter_application_4/Driver/BiodegradableInDriver.dart';
 import 'package:flutter_application_4/Driver/DegradableInDriver.dart';
 import 'package:flutter_application_4/Driver/DriverNotification.dart';
-import 'package:flutter_application_4/PublicAddComplaint.dart';
-import 'package:flutter_application_4/PublicComplaints.dart';
-import 'package:flutter_application_4/PublicProduct.dart';
+import 'package:flutter_application_4/Public/PublicAddComplaint.dart';
+import 'package:flutter_application_4/Public/PublicCart.dart';
+import 'package:flutter_application_4/Public/PublicComplaints.dart';
+import 'package:flutter_application_4/Public/PublicDriver.dart';
+import 'package:flutter_application_4/Public/PublicEditProfile.dart';
+import 'package:flutter_application_4/Public/PublicNotification.dart';
+import 'package:flutter_application_4/Public/PublicProduct.dart';
 import 'package:flutter_application_4/RecycleTeam/Recycleteamnotification.dart';
 import 'package:flutter_application_4/RecycleTeam/Recycleteamorder.dart';
 import 'package:flutter_application_4/RecycleTeam/Recycleteamprofile.dart';
@@ -29,7 +33,7 @@ import 'package:flutter_application_4/loginadmin.dart';
 import 'package:flutter_application_4/logindriver.dart';
 import 'package:flutter_application_4/loginrecycle.dart';
 import 'package:flutter_application_4/HomeNavigationBar.dart';
-import 'package:flutter_application_4/publichome.dart';
+import 'package:flutter_application_4/Public/publichome.dart';
 import 'package:flutter_application_4/RecycleTeam/recycleaddproducts.dart';
 import 'package:flutter_application_4/RecycleTeam/recyclehome.dart';
 import 'package:flutter_application_4/Driver/recycleteamindriver.dart';
@@ -57,7 +61,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:PublicProduct(),
+      home:PublicEdit(),
     );
   }
 }

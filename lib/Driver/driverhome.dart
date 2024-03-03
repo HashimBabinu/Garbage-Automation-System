@@ -46,7 +46,7 @@ class _DriverState extends State<Driver> {
                ],
              ),
             
-    Divider( 
+    Divider(                           //Divider
       color: Colors.black, 
       height: 20, 
       thickness: 1, 

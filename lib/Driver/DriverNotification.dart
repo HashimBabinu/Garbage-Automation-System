@@ -24,7 +24,7 @@ class _DriverNotificationState extends State<DriverNotification> {
                         width: 200,
                         child: Image.asset('picture/logo.png'))),
               ),
-            ],
+            ], 
           ),
           Expanded(
             child: ListView.builder(

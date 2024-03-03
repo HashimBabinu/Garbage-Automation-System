@@ -46,6 +46,7 @@ class _OrderState extends State<Order> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       'Product:',

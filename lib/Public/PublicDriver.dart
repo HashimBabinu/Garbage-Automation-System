@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
-class DriverProfile extends StatefulWidget {
-  const DriverProfile({super.key});
+class PublicDriver extends StatefulWidget {
+  const PublicDriver({super.key});
 
   @override
-  State<DriverProfile> createState() => _DriverProfileState();
+  State<PublicDriver> createState() => _PublicDriverState();
 }
 
-class _DriverProfileState extends State<DriverProfile> {
+class _PublicDriverState extends State<PublicDriver> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
         body: Stack(fit: StackFit.expand, children: <Widget>[
       Padding(
         padding: const EdgeInsets.only(bottom: 400),
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('picture/download.jpg'), 
+              image: AssetImage('picture/truck.jpg'), 
               fit: BoxFit.fitWidth,
             ),
           ),
@@ -26,25 +26,16 @@ class _DriverProfileState extends State<DriverProfile> {
       Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+           
+            
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(child: Icon(Icons.arrow_back)),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 50, top: 10),
-                child: Center(
-                    child: Container(
-                        child: SizedBox(
-                            height: 10,
-                            width: 10,
-                            child: Image.asset('picure/logo.png')))),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(child: Icon(Icons.logout)),
-              ),
+              Container(child: Image.asset('picture/logo.png'))
+             
+             
             ],
           ),
           Padding(
@@ -68,20 +59,34 @@ class _DriverProfileState extends State<DriverProfile> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 250),
-            child: Column(
+            padding: const EdgeInsets.only(left: 50),
+            child: Row(
               children: [
-                Text(
-                  'Name:',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                 
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Driver Name',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      '000000000000',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      'user@gmail.com',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                   
+                  ],
                 ),
-                Text(
-                  '   Number:',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  '  Mail id:',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                Padding(
+                  padding: const EdgeInsets.only(left: 50),
+                  child: Container(
+                        decoration: BoxDecoration(shape: BoxShape.circle,color: const Color.fromARGB(255, 255, 255, 255),
+                        border: Border.all(color: Colors.black,width: 3)),
+                        child: Icon(Icons.call)),
                 ),
               ],
             ),
@@ -89,6 +94,5 @@ class _DriverProfileState extends State<DriverProfile> {
         ],
       ),
     ]));
-    
   }
 }
