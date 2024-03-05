@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_4/userprofile.dart';
+import 'package:flutter_application_4/Public/userprofile.dart';
 
 class Mynavigationbar extends StatefulWidget {
   const Mynavigationbar({super.key});
@@ -44,7 +44,7 @@ class _MynavigationbarState extends State<Mynavigationbar> {
         ),
         BottomNavigationBarItem(
           icon:Icon(Icons.warning),
-          label:'Home',
+          label:'Warning',
           backgroundColor: Color.fromARGB(255, 76, 153, 175)
         ),
         

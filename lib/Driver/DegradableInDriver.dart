@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_4/Driver/BiodegradableInDriver.dart';
+import 'package:flutter_application_4/Driver/DriverNavigationbar.dart';
 
 class DriverDegradable extends StatefulWidget {
   const DriverDegradable({super.key});
@@ -10,30 +11,30 @@ class DriverDegradable extends StatefulWidget {
 
 class _DriverDegradableState extends State<DriverDegradable> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return Scaffold(
       body: Column(
         children: [
-          Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 30),
-                    child: Icon(
-                      Icons.arrow_back,
-                      size: 30,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 80),
-                    child: Container(
-                        child: SizedBox(
-                            height: 200,
-                            width: 200,
-                            child: Image.asset('picture/logo.png'))),
-                  ),
-                ],
+          Row( 
+            children: [
+              InkWell(onTap: () {
+                Navigator.push(context,MaterialPageRoute(builder: (context) {
+                  return DriverNavigation();
+                },));
+              },
+                child: Container(child: Icon(Icons.arrow_back)
+                ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(left: 90),
+                child: Container(
+                    child: SizedBox(
+                        height: 200,
+                        width: 200,
+                        child: Image.asset('picture/logo.png'))),
+              ),
+            ],
+          ),
               Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

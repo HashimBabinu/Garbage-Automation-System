@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/Public/PublicComplaints.dart';
+import 'package:flutter_application_4/Public/PublicNavigationbar.dart';
+import 'package:flutter_application_4/Public/publichome.dart';
 
 class PublicAddComplaint extends StatefulWidget {
   const PublicAddComplaint({super.key});
@@ -13,11 +16,18 @@ class _PublicAddComplaintState extends State<PublicAddComplaint> {
     return Scaffold(
       body: Column(
         children: [
-          Row(
+         Row(
             children: [
-              Icon(Icons.arrow_back),
+              InkWell(onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return PublicComplaint();
+                },));
+              },
+                child: Container(child: Icon(Icons.arrow_back)
+              )
+              ),
               Padding(
-                padding: const EdgeInsets.only(left: 40),
+                padding: const EdgeInsets.only(left: 90),
                 child: Container(
                     child: SizedBox(
                         height: 200,
@@ -64,19 +74,19 @@ class _PublicAddComplaintState extends State<PublicAddComplaint> {
               ),
             ],
           ),
-          Container(
-  width: 200.0, 
-  height: 100.0, 
-  decoration: BoxDecoration(
-    color: Color.fromARGB(255, 255, 255, 255), 
+//           Container(
+//   width: 200.0, 
+//   height: 100.0, 
+//   decoration: BoxDecoration(
+//     color: Color.fromARGB(255, 255, 255, 255), 
    
-    border: Border.all(
-      color: Colors.black, 
-      width: 1, 
-    ),
+//     border: Border.all(
+//       color: Colors.black, 
+//       width: 1, 
+//     ),
     
-  ),
-),
+//   ),
+// ),
 
         ],
       ),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/Public/PublicCart.dart';
+import 'package:flutter_application_4/Public/publichome.dart';
+import 'package:flutter_application_4/Public/userprofile.dart';
 
 class PublicProduct extends StatefulWidget {
   const PublicProduct({super.key});
@@ -14,17 +17,17 @@ class _PublicProductState extends State<PublicProduct> {
       body: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 30),
-                child: Icon(
-                  Icons.arrow_back,
-                  size: 30,
-                ),
+              InkWell(onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return Public();
+                },));
+              },
+                child: Container(child: Icon(Icons.arrow_back)
+              )
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 80),
+                padding: const EdgeInsets.only(left: 90),
                 child: Container(
                     child: SizedBox(
                         height: 200,
@@ -43,7 +46,7 @@ class _PublicProductState extends State<PublicProduct> {
               'Sticky Note',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-          ),
+          ), 
           Padding(
             padding: const EdgeInsets.all(8),
             child: Container(
@@ -62,35 +65,50 @@ class _PublicProductState extends State<PublicProduct> {
             padding: const EdgeInsets.only(right: 200),
             child: Text('INR 10',style: TextStyle(fontWeight: FontWeight.bold,),),
           ),
-          Row(
-            children: [
-              Container(
-                  height: 50,
-                  width: 200,
-                  decoration: BoxDecoration(
-                      color: Color(0xFF3DE07E),
-                      border: Border.all(color: const Color.fromARGB(255, 0, 0, 0))),
-                  child: Center(
-                    child: Text(
-                      'Buy',
-                      style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20)
+          Padding(
+            padding: const EdgeInsets.only(top: 150),
+            child: Row(
+              children: [
+                InkWell(onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return PublicCart();
+                  },));
+                },
+                  child: Container(
+                      height: 50,
+                      width: 200,
+                      decoration: BoxDecoration(
+                          color: Color(0xFF3DE07E),
+                          border: Border.all(color: const Color.fromARGB(255, 0, 0, 0))),
+                      child: Center(
+                        child: Text(
+                          'Buy',
+                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20)
+                        ),
+                      ),
+                    ),
+                ),
+                  InkWell(onTap: () {
+                    Navigator.push(context,MaterialPageRoute(builder: (context) {
+                      return Public();
+                    },));
+                  },
+                    child: Container(
+                      height: 50,
+                      width:210,
+                      decoration: BoxDecoration(
+                          color: Color(0xFF3DE07E),
+                          border: Border.all(color: const Color.fromARGB(255, 0, 0, 0))),
+                      child: Center(
+                        child: Text(
+                          'Cancel',
+                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20)
+                        ),
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                  height: 50,
-                  width:210,
-                  decoration: BoxDecoration(
-                      color: Color(0xFF3DE07E),
-                      border: Border.all(color: const Color.fromARGB(255, 0, 0, 0))),
-                  child: Center(
-                    child: Text(
-                      'Cancel',
-                      style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20)
-                    ),
-                  ),
-                ),
-            ],
+              ],
+            ),
           ),
 
         ],

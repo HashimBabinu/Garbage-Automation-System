@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/Public/PublicNavigationbar.dart';
+import 'package:flutter_application_4/Public/publichome.dart';
 
 class PublicNotification extends StatefulWidget {
   const PublicNotification({super.key});
@@ -13,9 +15,16 @@ class _PublicNotificationState extends State<PublicNotification> {
     return Scaffold(
       body: Column(
         children: [
-          Row(
+          Row( 
             children: [
-              Icon(Icons.arrow_back),
+              InkWell(onTap: () {
+                Navigator.push(context,MaterialPageRoute(builder: (context) {
+                  return PublicNavigation();
+                },));
+              },
+                child: Container(child: Icon(Icons.arrow_back)
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 40),
                 child: Container(
@@ -36,7 +45,7 @@ class _PublicNotificationState extends State<PublicNotification> {
             ],
           ),
           Divider(
-            //Divider
+            
             color: Colors.black,
             height: 20,
             thickness: 1,

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/Public/PublicNavigationbar.dart';
+import 'package:flutter_application_4/Public/publichome.dart';
 
 class PublicDriver extends StatefulWidget {
   const PublicDriver({super.key});
@@ -13,7 +15,7 @@ class _PublicDriverState extends State<PublicDriver> {
     return  Scaffold(
         body: Stack(fit: StackFit.expand, children: <Widget>[
       Padding(
-        padding: const EdgeInsets.only(bottom: 400),
+        padding: const EdgeInsets.only(bottom: 400), 
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -26,20 +28,27 @@ class _PublicDriverState extends State<PublicDriver> {
       Column(
         children: [
           Row(
-           
-            
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(child: Icon(Icons.arrow_back)),
+              InkWell(onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return PublicNavigation();
+                },));
+              },
+                child: Container(child: Icon(Icons.arrow_back)
+              )
               ),
-              Container(child: Image.asset('picture/logo.png'))
-             
-             
+              Padding(
+                padding: const EdgeInsets.only(left: 90),
+                child: Container(
+                    child: SizedBox(
+                        height: 200,
+                        width: 200,
+                        child: Image.asset('picture/logo.png'))),
+              ),
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 260, right: 200),
+            padding: const EdgeInsets.only(right: 230,top: 50),
             child: SizedBox(
               height: 120,
               width: 100,

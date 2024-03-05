@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/Driver/DriverNavigationbar.dart';
 
 class Registration2 extends StatefulWidget {
   const Registration2({super.key});
@@ -55,7 +56,11 @@ class _Registration2State extends State<Registration2> {
              ),
            ),
          ),
-         ElevatedButton(onPressed: (){}, child: Text('SIGN UP')),
+         ElevatedButton(onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return DriverNavigation();
+          },));
+         }, child: Text('SIGN UP')),
         ],
       )
     );

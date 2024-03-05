@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/Driver/DriverNavigationbar.dart';
 
 class DriverNotification extends StatefulWidget {
   const DriverNotification({super.key});
@@ -9,22 +10,29 @@ class DriverNotification extends StatefulWidget {
 
 class _DriverNotificationState extends State<DriverNotification> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return Scaffold(
        body: Column(
         children: [
-          Row(
+          Row( 
             children: [
-              Icon(Icons.arrow_back),
+              InkWell(onTap: () {
+                Navigator.push(context,MaterialPageRoute(builder: (context) {
+                  return DriverNavigation();
+                },));
+              },
+                child: Container(child: Icon(Icons.arrow_back)
+                ),
+              ),
               Padding(
-                padding: const EdgeInsets.only(left: 40),
+                padding: const EdgeInsets.only(left: 90),
                 child: Container(
                     child: SizedBox(
                         height: 200,
                         width: 200,
                         child: Image.asset('picture/logo.png'))),
               ),
-            ], 
+            ],
           ),
           Expanded(
             child: ListView.builder(

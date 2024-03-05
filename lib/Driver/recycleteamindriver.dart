@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_4/Driver/BiodegradableInDriver.dart';
 import 'package:flutter_application_4/Driver/DegradableInDriver.dart';
+import 'package:flutter_application_4/Driver/DriverNavigationbar.dart';
 import 'package:flutter_application_4/Driver/driverhome.dart';
 
 class Recycled extends StatefulWidget {
@@ -12,37 +13,30 @@ class Recycled extends StatefulWidget {
  
 class _RecycledState extends State<Recycled> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { 
     return Scaffold(
        body: Column(
         children: [
-          Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 30),
-                    child: InkWell(onTap: () {//inkwell
-                      Navigator.push(context, MaterialPageRoute(builder: (context) {
-                        return Driver();
-                      },));
-                    },
-                      child: Icon(
-                        Icons.arrow_back,
-                        size: 30,
-                       
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 80),
-                    child: Container(
-                        child: SizedBox(
-                            height: 200,
-                            width: 200,
-                            child: Image.asset('picture/logo.png'))),
-                  ),
-                ],
+         Row( 
+            children: [
+              InkWell(onTap: () {
+                Navigator.push(context,MaterialPageRoute(builder: (context) {
+                  return DriverNavigation();
+                },));
+              },
+                child: Container(child: Icon(Icons.arrow_back)
+                ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(left: 90),
+                child: Container(
+                    child: SizedBox(
+                        height: 200,
+                        width: 200,
+                        child: Image.asset('picture/logo.png'))),
+              ),
+            ],
+          ),
               Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

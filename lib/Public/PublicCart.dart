@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/Public/publichome.dart';
 
 class PublicCart extends StatefulWidget {
   const PublicCart({super.key});
@@ -17,15 +18,26 @@ class _PublicCartState extends State<PublicCart> {
           children: [
             Column(
               children: [
-                Row(
-                  children: [
-                    Icon(Icons.arrow_back),
-                    SizedBox(
+                 Row(
+            children: [
+              InkWell(onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return Public();
+                },));
+              },
+                child: Container(child: Icon(Icons.arrow_back)
+              )
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 90),
+                child: Container(
+                    child: SizedBox(
                         height: 200,
                         width: 200,
-                        child: Image.asset('picture/logo.png')),
-                  ],
-                ),
+                        child: Image.asset('picture/logo.png'))),
+              ),
+            ],
+          ),
                 Row(
                   children: [
                     Container(
@@ -107,7 +119,7 @@ class _PublicCartState extends State<PublicCart> {
             Column(
               children: [
                 Text(
-                  'only cash on delivery is available',
+                  'only cash on delivery is available', 
                   style: TextStyle(fontSize: 10),
                 ),
                 Container(

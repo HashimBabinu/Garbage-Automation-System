@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/Public/PublicAddComplaint.dart';
+import 'package:flutter_application_4/Public/PublicNavigationbar.dart';
 
 class PublicComplaint extends StatefulWidget {
   const PublicComplaint({super.key});
@@ -10,14 +12,21 @@ class PublicComplaint extends StatefulWidget {
 class _PublicComplaintState extends State<PublicComplaint> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold( 
       body: Column(
         children: [
-          Row(
+         Row(
             children: [
-              Icon(Icons.arrow_back),
+              InkWell(onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return PublicNavigation();
+                },));
+              },
+                child: Container(child: Icon(Icons.arrow_back)
+              )
+              ),
               Padding(
-                padding: const EdgeInsets.only(left: 40),
+                padding: const EdgeInsets.only(left: 90),
                 child: Container(
                     child: SizedBox(
                         height: 200,
@@ -73,9 +82,15 @@ class _PublicComplaintState extends State<PublicComplaint> {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 50,right: 20),
-                child: Icon(Icons.add_circle_outline),
+              InkWell(onTap: () {
+                Navigator.push(context,MaterialPageRoute(builder: (context) {
+                  return PublicAddComplaint();
+                },));
+              },
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 50,right: 20),
+                  child: Icon(Icons.add_circle_outline),
+                ),
               ),
             ],
           ),

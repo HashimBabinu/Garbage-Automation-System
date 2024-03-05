@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/Driver/DriverNavigationbar.dart';
+import 'package:flutter_application_4/Driver/DriverNotification.dart';
 
 class DriverProfile extends StatefulWidget {
   const DriverProfile({super.key});
@@ -26,29 +28,33 @@ class _DriverProfileState extends State<DriverProfile> {
       Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(child: Icon(Icons.arrow_back)),
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+              InkWell(onTap: () {
+                Navigator.push(context,MaterialPageRoute(builder: (context) {
+                  return DriverNavigation();
+                },));
+              },
+                child: Container(child: Icon(Icons.arrow_back)
+                ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 50, top: 10),
-                child: Center(
+                Center(
                     child: Container(
-                        child: SizedBox(
-                            height: 10,
-                            width: 10,
-                            child: Image.asset('picure/logo.png')))),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(child: Icon(Icons.logout)),
-              ),
-            ],
-          ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      'picture/logo.png',
+                      width: 200,
+                      height: 200,
+                    ),
+                  ),
+                )),
+                Container(child: Icon(Icons.logout)
+                )
+              ],
+            ),
           Padding(
-            padding: const EdgeInsets.only(top: 260, right: 200),
+            padding: const EdgeInsets.only(right: 250,top: 80),
             child: SizedBox(
               height: 120,
               width: 100,
@@ -56,7 +62,7 @@ class _DriverProfileState extends State<DriverProfile> {
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
                   border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(10), 
                   color: Colors.white,
                 ),
                 child: Padding(
@@ -70,17 +76,22 @@ class _DriverProfileState extends State<DriverProfile> {
           Padding(
             padding: const EdgeInsets.only(right: 250),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Name:',
+                  'Name',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  '   Number:',
+                  '9999999999',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  '  Mail id:',
+                  'DL99999999991111',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  'User@gmail.com',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],

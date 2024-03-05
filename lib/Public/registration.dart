@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_4/Admin/AdminHome.dart';
+import 'package:flutter_application_4/Public/PublicNavigationbar.dart';
 
 class Registration extends StatefulWidget {
   const Registration({super.key});
@@ -68,7 +69,7 @@ class _RegistrationState extends State<Registration> {
              padding: const EdgeInsets.only(top:200),
              child: ElevatedButton(onPressed: (){
               Navigator.push(context,MaterialPageRoute(builder: (context) {
-                return AdminHome();
+                return PublicNavigation();
               }));
              }, child:Text('SIGN UP',),),
            ),
