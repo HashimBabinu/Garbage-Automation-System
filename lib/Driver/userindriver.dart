@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_4/Driver/DriverNavigationbar.dart';
+import 'package:flutter_application_4/Driver/PickupCompleted.dart';
 
 class Userd extends StatefulWidget {
   const Userd({super.key});
@@ -68,7 +69,11 @@ class _UserdState extends State<Userd> {
                                         ), 
                                          Column(
                                         children: [
-                                          Icon(Icons.check_circle_outline_rounded),
+                                          InkWell(onTap: () {
+                                            Navigator.push(context,MaterialPageRoute(builder: (context) {
+                                              return Pickup();
+                                            },));
+                                          },child: Icon(Icons.check)),
                                            Icon(Icons.access_time),
                                            Icon(Icons.cancel_presentation_sharp),
                                           

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_4/Public/PublicAddComplaint.dart';
+import 'package:flutter_application_4/Public/PublicAdminReply.dart';
 import 'package:flutter_application_4/Public/PublicNavigationbar.dart';
 
 class PublicComplaint extends StatefulWidget {
@@ -66,11 +67,17 @@ class _PublicComplaintState extends State<PublicComplaint> {
                               ],
                             ),
                             subtitle: 
-                                    Text(
-                                      'I would like to report a missed waste pickup for my household located at marutha. Our scheduled pickup day was 17/03/2000, but unfortunately, the waste collection truck did not pass by our area today. We had placed our bins out on time according to the schedule provided by the municipality, but it seems they were not collected',
-                                      
-                                          
-                                         
+                                    InkWell(onTap: () {
+                                      Navigator.push(context,MaterialPageRoute(builder: (context) {
+                                        return PublicAdminReply();
+                                      },));
+                                    },
+                                      child: Text(
+                                        'I would like to report a missed waste pickup for my household located at marutha. Our scheduled pickup day was 17/03/2000, but unfortunately, the waste collection truck did not pass by our area today. We had placed our bins out on time according to the schedule provided by the municipality, but it seems they were not collected',
+                                        
+                                            
+                                           
+                                      ),
                                     ),
                                    
                                    

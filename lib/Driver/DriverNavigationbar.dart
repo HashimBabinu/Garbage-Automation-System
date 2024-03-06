@@ -10,38 +10,51 @@ class DriverNavigation extends StatefulWidget {
 }
 
 class _DriverNavigationState extends State<DriverNavigation> {
-  int _selectedIndex=0;
-    static const List<dynamic>_widgetoptions=[ 
-      Recycled(),
-      Driver(),
-
-     
-  ]; 
-   void _onItemTapped(int index){ 
-    setState((){
-      _selectedIndex=index;
+  int _selectedIndex = 0;
+  static const List<dynamic> _widgetoptions = [
+    Driver(),
+    Recycled(),
+  ];
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
     });
-   }
+  }
+
   @override
-  Widget build(BuildContext context) { 
-    return  Scaffold(
-     
-      body: Center(child:_widgetoptions.
-      elementAt(_selectedIndex),),
-bottomNavigationBar: BottomNavigationBar(backgroundColor: Color(0xFF3DE07E),items: [
-  BottomNavigationBarItem(icon: Icon(Icons.recycling_rounded,color: Colors.black87,),label: 'Recycle Team'),
-
-  BottomNavigationBarItem(icon: Icon(Icons.home,color: Colors.black87,),label: 'Home'),
-
-  BottomNavigationBarItem(icon: Icon(Icons.logout,color: Colors.black87,),label: 'Warning')
-],
-type: BottomNavigationBarType.shifting,
-currentIndex: _selectedIndex,
-selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
-iconSize: 20,
-onTap: _onItemTapped,
-elevation: 5
-),
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: _widgetoptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+           
+          items: [
+            BottomNavigationBarItem(
+              backgroundColor: Color(0xFF3DE07E),
+                icon: Icon(
+                  Icons.home,
+                  color: Colors.black87,
+                ),
+                label: 'Home'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.recycling,
+                  color: Colors.black87,
+                ),
+                label: 'Recycle Team'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.logout,
+                  color: Colors.black87,
+                ),
+                label: 'Logout')          ],
+          type: BottomNavigationBarType.shifting,
+          currentIndex: _selectedIndex,
+          selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
+          iconSize: 20,
+          onTap: _onItemTapped,
+          elevation: 5),
     );
   }
 }

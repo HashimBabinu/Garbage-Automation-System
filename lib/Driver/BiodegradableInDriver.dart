@@ -88,7 +88,7 @@ class _DriverBioState extends State<DriverBio> {
                     padding: const EdgeInsets.all(8.0),
                     child: Card(
                       elevation: 5,
-                      color: Color.fromARGB(255, 35, 188, 94),
+                      color: Color(0xFF3DE07E),
                       child: Padding(
                           padding: const EdgeInsets.all(8.0), 
                           child: ListTile(
@@ -114,6 +114,13 @@ class _DriverBioState extends State<DriverBio> {
                                             fontStyle: FontStyle.italic)),
                                   ],
                                 ),
+                                Padding(
+                  padding: const EdgeInsets.only(left: 50),
+                  child: Container(
+                        decoration: BoxDecoration(shape: BoxShape.circle,color: Color(0xFF3DE07E),
+                        border: Border.all(color: Colors.black,width: 3)),
+                        child: Icon(Icons.call)),
+                ),
                               ],
                             ),
                             

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/Admin/AdminNavigationbar.dart';
 
 class AdminViewUsers extends StatefulWidget {
   const AdminViewUsers({super.key});
@@ -15,9 +16,13 @@ class _AdminViewUsersState extends State<AdminViewUsers> {
         children: [
           Row(
             children: [
-              Icon(Icons.arrow_back),
+              InkWell(onTap: () {
+                Navigator.push(context,MaterialPageRoute(builder: (context) {
+                  return AdminNavigation();
+                },));
+              },child: Icon(Icons.arrow_back)),
               Padding(
-                padding: const EdgeInsets.only(left: 40),
+                padding: const EdgeInsets.only(left: 90),
                 child: Container(
                     child: SizedBox(
                         height: 200,

@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/Admin/AdminApproveDriver.dart';
+import 'package:flutter_application_4/Admin/AdminApproveRecycle.dart';
+import 'package:flutter_application_4/Admin/AdminNavigationbar.dart';
+import 'package:flutter_application_4/Admin/AdminViewUsers.dart';
+import 'package:flutter_application_4/Admin/adminprofile.dart';
 
 class AdminHome extends StatefulWidget {
   const AdminHome({super.key});
@@ -16,16 +21,22 @@ class _AdminHomeState extends State<AdminHome> {
           Row(
                
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0), 
-                    child: Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Colors.black), 
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SizedBox(height: 50,width: 50,child: Icon(Icons.person)),
+                  InkWell(onTap: () {
+                    Navigator.push(context,MaterialPageRoute(builder: (context) {
+                      return AdminProfile();
+                    },));
+                  },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0), 
+                      child: Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.black), 
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SizedBox(height: 50,width: 50,child: Icon(Icons.person)),
+                        ),
                       ),
                     ),
                   ),
@@ -46,29 +57,35 @@ class _AdminHomeState extends State<AdminHome> {
                child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                  children: [            
-                             Container(
-                               child: Row(
-                                 children: [
-                                   Padding(
-                                     padding: const EdgeInsets.only(left: 60),
-                                     child: Text('view users', style: TextStyle(
-                                        color: Colors.black, 
-                                        fontSize: 30,fontWeight: FontWeight.bold 
-                                      ),),
-                                   ),
-                                    
-                                 ],
-                               ),
-                               
-                               width: 273, 
-                               height: 57, 
-                               decoration: BoxDecoration(
-                    color: const  Color(0xFF3DE07E),
-                    border: Border.all(
-                      color: Colors.black, 
-                      width: 2, 
-                    ),
-                    borderRadius: BorderRadius.circular(10)
+                             InkWell(onTap: () {
+                               Navigator.push(context,MaterialPageRoute(builder: (context) {
+                                 return AdminViewUsers();
+                               },));
+                             },
+                               child: Container(
+                                 child: Row(
+                                   children: [
+                                     Padding(
+                                       padding: const EdgeInsets.only(left: 60),
+                                       child: Text('view users', style: TextStyle(
+                                          color: Colors.black, 
+                                          fontSize: 30,fontWeight: FontWeight.bold 
+                                        ),),
+                                     ),
+                                      
+                                   ],
+                                 ),
+                                 
+                                 width: 273, 
+                                 height: 57, 
+                                 decoration: BoxDecoration(
+                                                   color: const  Color(0xFF3DE07E),
+                                                   border: Border.all(
+                                                     color: Colors.black, 
+                                                     width: 2, 
+                                                   ),
+                                                   borderRadius: BorderRadius.circular(10)
+                                 ),
                                ),
                              ),
                            
@@ -80,12 +97,56 @@ class _AdminHomeState extends State<AdminHome> {
                Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                  children: [            
-                             Container(
+                             InkWell(onTap: () {
+                               Navigator.push(context,MaterialPageRoute(builder: (context) {
+                                 return ApproveDriver();
+                               },));
+                             },
+                               child: Container(
+                                 child: Row(
+                                   children: [
+                                     Padding(
+                                       padding: const EdgeInsets.only(left: 60),
+                                       child: Text('Approve Driver', style: TextStyle(
+                                          color: Colors.black, 
+                                          fontSize: 30,fontWeight: FontWeight.bold 
+                                        ),),
+                                     ),
+                                      
+                                   ],
+                                 ),
+                                 
+                                 width: 273, 
+                                 height: 57, 
+                                 decoration: BoxDecoration(
+                                                   color: const  Color(0xFF3DE07E),
+                                                   border: Border.all(
+                                                     color: Colors.black, 
+                                                     width: 2, 
+                                                   ),
+                                                   borderRadius: BorderRadius.circular(10)
+                                 ),
+                               ),
+                             ),
+                           
+                           
+                 ],
+                             ),
+               SizedBox(height: 30,),
+               Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+               children: [            
+                           InkWell(onTap: () {
+                             Navigator.push(context,MaterialPageRoute(builder: (context) {
+                               return ApproveRecycle();
+                             },));
+                           },
+                             child: Container(
                                child: Row(
                                  children: [
                                    Padding(
-                                     padding: const EdgeInsets.only(left: 60),
-                                     child: Text('Approve Driver', style: TextStyle(
+                                     padding: const EdgeInsets.only(left: 10),
+                                     child: Text('Approve Recycle Team', style: TextStyle(
                                         color: Colors.black, 
                                         fontSize: 30,fontWeight: FontWeight.bold 
                                       ),),
@@ -97,45 +158,13 @@ class _AdminHomeState extends State<AdminHome> {
                                width: 273, 
                                height: 57, 
                                decoration: BoxDecoration(
-                    color: const  Color(0xFF3DE07E),
-                    border: Border.all(
-                      color: Colors.black, 
-                      width: 2, 
-                    ),
-                    borderRadius: BorderRadius.circular(10)
+                                               color: const  Color(0xFF3DE07E),
+                                               border: Border.all(
+                                                 color: Colors.black, 
+                                                 width: 2, 
+                                               ),
+                                               borderRadius: BorderRadius.circular(10)
                                ),
-                             ),
-                           
-                           
-                 ],
-                             ),
-               SizedBox(height: 30,),
-               Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-               children: [            
-                           Container(
-                             child: Row(
-                               children: [
-                                 Padding(
-                                   padding: const EdgeInsets.only(left: 10),
-                                   child: Text('Approve Recycle Team', style: TextStyle(
-                                      color: Colors.black, 
-                                      fontSize: 30,fontWeight: FontWeight.bold 
-                                    ),),
-                                 ),
-                                  
-                               ],
-                             ),
-                             
-                             width: 273, 
-                             height: 57, 
-                             decoration: BoxDecoration(
-                  color: const  Color(0xFF3DE07E),
-                  border: Border.all(
-                    color: Colors.black, 
-                    width: 2, 
-                  ),
-                  borderRadius: BorderRadius.circular(10)
                              ),
                            ),
                          

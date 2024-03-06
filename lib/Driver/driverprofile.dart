@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/Driver/DriverEdit.dart';
 import 'package:flutter_application_4/Driver/DriverNavigationbar.dart';
 import 'package:flutter_application_4/Driver/DriverNotification.dart';
 
@@ -53,22 +54,28 @@ class _DriverProfileState extends State<DriverProfile> {
                 )
               ],
             ),
-          Padding(
-            padding: const EdgeInsets.only(right: 250,top: 80),
-            child: SizedBox(
-              height: 120,
-              width: 100,
-              child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(10), 
-                  color: Colors.white,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                      height: 100, width: 100, child: Icon(Icons.person)),
+          InkWell(onTap: () {
+            Navigator.push(context,MaterialPageRoute(builder: (context) {
+              return DriverEdit();
+            },));
+          },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 250,top: 80),
+              child: SizedBox(
+                height: 120,
+                width: 100,
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    border: Border.all(color: Colors.black),
+                    borderRadius: BorderRadius.circular(10), 
+                    color: Colors.white,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                        height: 100, width: 100, child: Icon(Icons.person)),
+                  ),
                 ),
               ),
             ),

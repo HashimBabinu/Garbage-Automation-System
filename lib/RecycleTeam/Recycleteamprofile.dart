@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/RecycleTeam/RecycleNavigation.dart';
+import 'package:flutter_application_4/RecycleTeam/RecycleProfileEdit.dart';
 
 class RecycleProfile extends StatefulWidget {
   const RecycleProfile({super.key});
@@ -25,44 +27,48 @@ class _RecycleProfileState extends State<RecycleProfile> {
       ),
       Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          Row( 
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(child: Icon(Icons.arrow_back)),
+              InkWell(onTap: () {
+                Navigator.push(context,MaterialPageRoute(builder: (context) {
+                  return RecycleNavigation();
+                },));
+              },
+                child: Container(child: Icon(Icons.arrow_back)
+                ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 50, top: 10),
-                child: Center(
-                    child: Container(
-                        child: SizedBox(
-                            height: 10,
-                            width: 10,
-                            child: Image.asset('picure/logo.png')))),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(child: Icon(Icons.logout)),
+                padding: const EdgeInsets.only(left: 90),
+                child: Container(
+                    child: SizedBox(
+                        height: 200,
+                        width: 200,
+                        child: Image.asset('picture/logo.png'))),
               ),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 260, right: 200),
-            child: SizedBox(
-              height: 120,
-              width: 100,
-              child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.white,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                      height: 100, width: 100, child: Icon(Icons.person)),
+          InkWell(onTap: () {
+            Navigator.push(context,MaterialPageRoute(builder: (context) {
+              return RecycleProfileEdit();
+            },));
+          },
+            child: Padding(
+              padding: const EdgeInsets.only(top: 100,right: 250),
+              child: SizedBox(
+                height: 120,
+                width: 100,
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    border: Border.all(color: Colors.black),
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                        height: 100, width: 100, child: Icon(Icons.person)),
+                  ),
                 ),
               ),
             ),
@@ -70,8 +76,9 @@ class _RecycleProfileState extends State<RecycleProfile> {
           Padding(
             padding: const EdgeInsets.only(right: 250),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('           Company Name:',style: TextStyle(fontWeight: FontWeight.bold),),
+                Text('Company Name:',style: TextStyle(fontWeight: FontWeight.bold),),
                 
                 Text('Number:',style: TextStyle(fontWeight: FontWeight.bold),),
                 Text('Mail id:',style: TextStyle(fontWeight: FontWeight.bold),),

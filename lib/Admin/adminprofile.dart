@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/Admin/AdminEdit.dart';
+import 'package:flutter_application_4/Admin/AdminNavigationbar.dart';
+import 'package:flutter_application_4/Driver/DriverNavigationbar.dart';
 
 class AdminProfile extends StatefulWidget {
   const AdminProfile({super.key});
@@ -17,8 +20,8 @@ class _AdminProfileState extends State<AdminProfile> {
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('picture/logo.png'),
-              fit: BoxFit.fill,
+              image: AssetImage('picture/admin.jpg'), 
+              fit: BoxFit.fitWidth,
             ),
           ),
         ),
@@ -26,43 +29,52 @@ class _AdminProfileState extends State<AdminProfile> {
       Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(child: Icon(Icons.arrow_back)),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 50, top: 10),
-                child: Center(
-                    child: Container(
-                        child: SizedBox(
-                            height: 10,
-                            width: 10,
-                            child: Image.asset('picure/logo.png')))),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(child: Icon(Icons.logout)),
-              ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 260, right: 200),
-            child: SizedBox(
-              height: 120,
-              width: 100,
-              child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.white,
+             
+              children: [
+              InkWell(onTap: () {
+                Navigator.push(context,MaterialPageRoute(builder: (context) {
+                  return AdminNavigation();
+                },));
+              },
+                child: Container(child: Icon(Icons.arrow_back)
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                      height: 100, width: 100, child: Icon(Icons.person)),
+              ),
+                Center(
+                    child: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 90),
+                    child: Image.asset(
+                      'picture/logo.png',
+                      width: 200,
+                      height: 200,
+                    ),
+                  ),
+                )),
+               
+              ],
+            ),
+          InkWell(onTap: () {
+            Navigator.push(context,MaterialPageRoute(builder: (context) {
+              return AdminEdit();
+            },));
+          },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 250,top: 80),
+              child: SizedBox(
+                height: 120,
+                width: 100,
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    border: Border.all(color: Colors.black),
+                    borderRadius: BorderRadius.circular(10), 
+                    color: Colors.white,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                        height: 100, width: 100, child: Icon(Icons.person)),
+                  ),
                 ),
               ),
             ),
@@ -70,17 +82,19 @@ class _AdminProfileState extends State<AdminProfile> {
           Padding(
             padding: const EdgeInsets.only(right: 250),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Name:',
+                  'Name',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  '   Number:',
+                  '9999999999',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
+               
                 Text(
-                  '  Mail id:',
+                  'User@gmail.com',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ],
@@ -88,6 +102,6 @@ class _AdminProfileState extends State<AdminProfile> {
           ),
         ],
       ),
-    ]));;
+    ]));
   }
 }

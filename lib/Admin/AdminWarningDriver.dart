@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/Admin/AdminNavigationbar.dart';
+import 'package:flutter_application_4/Admin/AdminWarningRecycle.dart';
 
 class AdminWarningDriver extends StatefulWidget {
   const AdminWarningDriver({super.key});
@@ -14,18 +16,15 @@ class _AdminWarningDriverState extends State<AdminWarningDriver> {
       Scaffold(
       body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+           Row(
             children: [
+              InkWell(onTap: () {
+                Navigator.push(context,MaterialPageRoute(builder: (context) {
+                  return AdminNavigation();
+                },));
+              },child: Icon(Icons.arrow_back)),
               Padding(
-                padding: const EdgeInsets.only(bottom: 30),
-                child: Icon(
-                  Icons.arrow_back,
-                  size: 30,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 80),
+                padding: const EdgeInsets.only(left: 90),
                 child: Container(
                     child: SizedBox(
                         height: 200,
@@ -57,23 +56,29 @@ class _AdminWarningDriverState extends State<AdminWarningDriver> {
                 
                 ),
               ),
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 22,top: 7),
-                  child: Text(
-                    'Recycle Team',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w500, color: Colors.black),
+              InkWell(onTap: () {
+                Navigator.push(context,MaterialPageRoute(builder: (context) {
+                  return AdminWarningRecycle();
+                },));
+              },
+                child: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 22,top: 7),
+                    child: Text(
+                      'Recycle Team',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500, color: Colors.black),
+                    ),
                   ),
+                  width: 123,
+                  height: 34,
+                  decoration: BoxDecoration(
+                      color: Color(0xFF3DE07E),
+                      border: Border.all(color: Colors.black, width: 1),
+                      borderRadius: BorderRadius.circular(10)),
+                      
+                
                 ),
-                width: 123,
-                height: 34,
-                decoration: BoxDecoration(
-                    color: Color(0xFF3DE07E),
-                    border: Border.all(color: Colors.black, width: 1),
-                    borderRadius: BorderRadius.circular(10)),
-                    
-
               ),
 
             ],
@@ -81,7 +86,7 @@ class _AdminWarningDriverState extends State<AdminWarningDriver> {
           Container(child: Text('')),Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextFormField(maxLines: null,
-              decoration:InputDecoration(hintText: ('type complaint'),
+              decoration:InputDecoration(hintText: ('type here'),
               border: OutlineInputBorder()),
               
             ),

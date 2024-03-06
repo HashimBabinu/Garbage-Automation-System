@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/Admin/AdminDriverCompaints.dart';
+import 'package:flutter_application_4/Admin/AdminNavigationbar.dart';
+import 'package:flutter_application_4/Admin/AdminReplay.dart';
 
 class RecycleComplaints extends StatefulWidget {
   const RecycleComplaints({super.key});
@@ -14,17 +17,17 @@ class _RecycleComplaintsState extends State<RecycleComplaints> {
        body: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 30),
-                child: Icon(
-                  Icons.arrow_back,
-                  size: 30,
+              InkWell(onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return AdminNavigation();
+                },));
+              },
+                child: Container(child: Icon(Icons.arrow_back)
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 80),
+                padding: const EdgeInsets.only(left: 90),
                 child: Container(
                     child: SizedBox(
                         height: 200,
@@ -38,21 +41,27 @@ class _RecycleComplaintsState extends State<RecycleComplaints> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 80),
-                child: Container(
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 45, top: 7),
-                    child: Text(
-                      'Driver',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w500, color: Colors.black),
+                child: InkWell(onTap: () {
+                  Navigator.push(context,MaterialPageRoute(builder: (context) {
+                    return DriverComplaints();
+                  },));
+                },
+                  child: Container(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 45, top: 7),
+                      child: Text(
+                        'Driver',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500, color: Colors.black),
+                      ),
                     ),
+                    width: 123,
+                    height: 34,
+                    decoration: BoxDecoration(
+                        color: Color(0xFF3DE07E),
+                        border: Border.all(color: Colors.black, width: 1),
+                        borderRadius: BorderRadius.circular(10)),
                   ),
-                  width: 123,
-                  height: 34,
-                  decoration: BoxDecoration(
-                      color: Color(0xFF3DE07E),
-                      border: Border.all(color: Colors.black, width: 1),
-                      borderRadius: BorderRadius.circular(10)),
                 ),
               ),
               Container(
@@ -85,7 +94,11 @@ class _RecycleComplaintsState extends State<RecycleComplaints> {
                       title: Text(
                           'Complaint against recycle team'),
                       trailing: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context,MaterialPageRoute(builder: (context) {
+                              return AdminReplay();
+                            },));
+                          },
                           style: ElevatedButton.styleFrom(
                               primary: Color(0xFF3DE07E)),
                           child: Text(

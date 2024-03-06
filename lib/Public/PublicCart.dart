@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/Public/OrderVerified.dart';
+import 'package:flutter_application_4/Public/PublicNavigationbar.dart';
 import 'package:flutter_application_4/Public/publichome.dart';
 
 class PublicCart extends StatefulWidget {
@@ -22,7 +24,7 @@ class _PublicCartState extends State<PublicCart> {
             children: [
               InkWell(onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return Public();
+                  return PublicNavigation();
                 },));
               },
                 child: Container(child: Icon(Icons.arrow_back)
@@ -141,10 +143,16 @@ class _PublicCartState extends State<PublicCart> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween, 
                     children: [
                       Text('₹ 10'),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 20),
-                        child: Container(
-                            color: Colors.yellow, child: Text('Continue')),
+                      InkWell(onTap: () {
+                        Navigator.push(context,MaterialPageRoute(builder: (context) {
+                          return OrderVerified();
+                        },));
+                      },
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 20),
+                          child: Container(
+                              color: Colors.yellow, child: Text('Continue')),
+                        ),
                       )
                     ],
                   ),

@@ -11,37 +11,53 @@ class AdminNavigation extends StatefulWidget {
 }
 
 class _AdminNavigationState extends State<AdminNavigation> {
-   int _selectedIndex=0;
-    static const List<dynamic>_widgetoptions=[ 
-      AdminComplaint(),
-      AdminHome(),
-      AdminWarning()
+  int _selectedIndex = 0;
+  static const List<dynamic> _widgetoptions = [
+    AdminHome(),
+    AdminComplaint(),
+    AdminWarning()
   ];
-  void _onItemTapped(int index){ 
-    setState((){
-      _selectedIndex=index;
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
     });
   }
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-     
-      body: Center(child:_widgetoptions.
-      elementAt(_selectedIndex),),
-bottomNavigationBar: BottomNavigationBar(backgroundColor: Color(0xFF3DE07E),items: [
-  BottomNavigationBarItem(icon: Icon(Icons.report,color: Colors.black87,),label: 'Complaints'),
-
-  BottomNavigationBarItem(icon: Icon(Icons.home,color: Colors.black87,),label: 'Home'),
-
-  BottomNavigationBarItem(icon: Icon(Icons.system_security_update_warning_outlined,color: Colors.black87,),label: 'Warning')
-],
-type: BottomNavigationBarType.shifting,
-currentIndex: _selectedIndex,
-selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
-iconSize: 20,
-onTap: _onItemTapped,
-elevation: 5
-),
+    return Scaffold(
+      body: Center(
+        child: _widgetoptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Color(0xFF3DE07E),
+          items: [
+            BottomNavigationBarItem(
+              backgroundColor: Color(0xFF3DE07E) ,
+                icon: Icon(
+                  Icons.home,
+                  color: Colors.black87,
+                ),
+                label: 'Home'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.report,
+                  color: Colors.black87,
+                ),
+                label: 'Complaints'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.system_security_update_warning_outlined,
+                  color: Colors.black87,
+                ),
+                label: 'Warning'),
+          ],
+          type: BottomNavigationBarType.shifting,
+          currentIndex: _selectedIndex,
+          selectedItemColor: const Color.fromARGB(255, 0, 0, 0),
+          iconSize: 20,
+          onTap: _onItemTapped,
+          elevation: 5),
     );
   }
 }

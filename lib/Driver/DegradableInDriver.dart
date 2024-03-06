@@ -115,6 +115,13 @@ class _DriverDegradableState extends State<DriverDegradable> {
                                             fontStyle: FontStyle.italic)),
                                   ],
                                 ),
+                                 Padding(
+                  padding: const EdgeInsets.only(left: 50),
+                  child: Container(
+                        decoration: BoxDecoration(shape: BoxShape.circle,color: Color(0xFF3DE07E),
+                        border: Border.all(color: Colors.black,width: 3)),
+                        child: Icon(Icons.call)),
+                ),
                               ],
                             ),
                            

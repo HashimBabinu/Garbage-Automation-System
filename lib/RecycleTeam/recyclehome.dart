@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/RecycleTeam/RecycleNavigation.dart';
+import 'package:flutter_application_4/RecycleTeam/Recycleteamnotification.dart';
+import 'package:flutter_application_4/RecycleTeam/Recycleteamorder.dart';
+import 'package:flutter_application_4/RecycleTeam/Recycleteamprofile.dart';
+import 'package:flutter_application_4/RecycleTeam/recycleaddproducts.dart';
 
 class Recycle extends StatefulWidget {
   const Recycle({super.key});
@@ -14,53 +19,85 @@ class _RecycleState extends State<Recycle> {
       body: Column(
         children: [
           Row(
-            children: [
-             
-              Padding(
-                padding: const EdgeInsets.only(bottom: 200,left: 100),
-                child: SizedBox(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                      return RecycleProfile();
+                    },));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: Container(
-                        child: Image.asset(
-                  'picture/logo.png',
-                  height: 200,
-                  width: 200,
-                ))),
-              ),
-               Padding(
-                padding: const EdgeInsets.only(bottom: 250,left: 60),
-                child: Container(child: Icon(Icons.notifications,size: 30,)),
-              ),
-            ],
-          ),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.black),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child:
+                         Icon(Icons.person),
+                      ),
+                    ),
+                  ),
+                ),
+                Center(
+                    child: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      'picture/logo.png',
+                      width: 200,
+                      height: 200,
+                    ),
+                  ),
+                )),
+                InkWell(onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return RecycleNotification();
+                  },));
+                },
+                  child: Container(child: Icon(Icons.notifications)
+                  ),
+                )
+              ],
+            ),
           Row(
               mainAxisAlignment: MainAxisAlignment.center,
                children: [            
-                           Container(
-                             child: Row(
-                               children: [
-                                 Padding(
-                                   padding: const EdgeInsets.only(left: 60),
-                                   child: Text('Add Products', style: TextStyle(
-                                      color: Colors.black, 
-                                      fontSize: 20,fontWeight: FontWeight.bold 
-                                    ),),
-                                 ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 30),
-                                    child: Container(child: Icon(Icons.add)),
-                                  ), 
-                               ],
-                             ),
-                             
-                             width: 273, 
-                             height: 57, 
-                             decoration: BoxDecoration(
-                  color: const  Color(0xFF3DE07E),
-                  border: Border.all(
-                    color: Colors.black, 
-                    width: 2, 
-                  ),
-                  borderRadius: BorderRadius.circular(10)
+                           InkWell(onTap: () {
+                             Navigator.push(context,MaterialPageRoute(builder: (context) {
+                               return AddProduct();
+                             },));
+                           },
+                             child: Container(
+                               child: Row(
+                                 children: [
+                                   Padding(
+                                     padding: const EdgeInsets.only(left: 60),
+                                     child: Text('Add Products', style: TextStyle(
+                                        color: Colors.black, 
+                                        fontSize: 20,fontWeight: FontWeight.bold 
+                                      ),),
+                                   ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 30),
+                                      child: Container(child: Icon(Icons.add)),
+                                    ), 
+                                 ],
+                               ),
+                               
+                               width: 273, 
+                               height: 57, 
+                               decoration: BoxDecoration(
+                                               color: const  Color(0xFF3DE07E),
+                                               border: Border.all(
+                                                 color: Colors.black, 
+                                                 width: 2, 
+                                               ),
+                                               borderRadius: BorderRadius.circular(10)
+                               ),
                              ),
                            ),
                          
@@ -72,32 +109,38 @@ class _RecycleState extends State<Recycle> {
                 child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                  children: [            
-                             Container(
-                               child: Row(
-                                 children: [
-                                   Padding(
-                                     padding: const EdgeInsets.only(left: 60),
-                                     child: Text('View Orders', style: TextStyle(
-                                        color: Colors.black, 
-                                        fontSize: 20,fontWeight: FontWeight.bold 
-                                      ),),
-                                   ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 30),
-                                      child: Container(child: Icon(Icons.menu_rounded)),
-                                    ),
-                                 ],
-                               ),
-                               
-                               width: 273, 
-                               height: 57, 
-                               decoration: BoxDecoration(
-                    color: const  Color(0xFF3DE07E),
-                    border: Border.all(
-                      color: Colors.black, 
-                      width: 2, 
-                    ),
-                    borderRadius: BorderRadius.circular(10)
+                             InkWell(onTap: () {
+                               Navigator.push(context,MaterialPageRoute(builder: (context) {
+                                 return Order();
+                               },));
+                             },
+                               child: Container(
+                                 child: Row(
+                                   children: [
+                                     Padding(
+                                       padding: const EdgeInsets.only(left: 60),
+                                       child: Text('View Orders', style: TextStyle(
+                                          color: Colors.black, 
+                                          fontSize: 20,fontWeight: FontWeight.bold 
+                                        ),),
+                                     ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 30),
+                                        child: Container(child: Icon(Icons.menu_rounded)),
+                                      ),
+                                   ],
+                                 ),
+                                 
+                                 width: 273, 
+                                 height: 57, 
+                                 decoration: BoxDecoration(
+                                                   color: const  Color(0xFF3DE07E),
+                                                   border: Border.all(
+                                                     color: Colors.black, 
+                                                     width: 2, 
+                                                   ),
+                                                   borderRadius: BorderRadius.circular(10)
+                                 ),
                                ),
                              ),
                            

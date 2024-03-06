@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/RecycleTeam/RecycleNavigation.dart';
+import 'package:flutter_application_4/RecycleTeam/recyclehome.dart';
 
 class Registration3 extends StatefulWidget {
   const Registration3({super.key});
@@ -52,7 +54,11 @@ class _Registration3State extends State<Registration3> {
                   ),
                 ),
               ),
-              ElevatedButton(onPressed: (){}, child: Text('SIGN UP')),
+              ElevatedButton(onPressed: (){
+                Navigator.push(context,MaterialPageRoute(builder: (context) {
+                  return RecycleNavigation();
+                },));
+              },style: ElevatedButton.styleFrom(primary: Color(0xFF3DE07E)) ,child: Text('SIGN UP',style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),)),
 
             ],
           ),

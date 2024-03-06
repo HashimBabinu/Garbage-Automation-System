@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_4/RecycleTeam/RecycleNavigation.dart';
 
 class RecycleNotification extends StatefulWidget {
   const RecycleNotification({super.key});
@@ -15,9 +16,16 @@ class _RecycleNotificationState extends State<RecycleNotification> {
         children: [
           Row(
             children: [
-              Icon(Icons.arrow_back),
+              InkWell(onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return RecycleNavigation();
+                },));
+              },
+                child: Container(child: Icon(Icons.arrow_back)
+              )
+              ),
               Padding(
-                padding: const EdgeInsets.only(left: 40),
+                padding: const EdgeInsets.only(left: 90),
                 child: Container(
                     child: SizedBox(
                         height: 200,

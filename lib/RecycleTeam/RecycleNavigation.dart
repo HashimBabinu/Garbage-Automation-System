@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_4/Public/PublicComplaints.dart';
-import 'package:flutter_application_4/Public/PublicDriver.dart';
-import 'package:flutter_application_4/Public/publichome.dart';
+import 'package:flutter_application_4/RecycleTeam/RecycleTeamItem.dart';
+import 'package:flutter_application_4/RecycleTeam/recyclehome.dart';
 
-class PublicNavigation extends StatefulWidget {
-  const PublicNavigation({super.key});
+class RecycleNavigation extends StatefulWidget {
+  const RecycleNavigation({super.key});
 
   @override
-  State<PublicNavigation> createState() => _PublicNavigationState();
+  State<RecycleNavigation> createState() => _RecycleNavigationState();
 }
 
-class _PublicNavigationState extends State<PublicNavigation> {
-  int _selectedIndex = 0;
+class _RecycleNavigationState extends State<RecycleNavigation> {
+   int _selectedIndex = 0;
   static const List<dynamic> _widgetoptions = [
-    Public(),
-    PublicDriver(),
-    PublicComplaint()
+    Recycle(),
+    AddedItem()
+
+    
   ];
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,10 +29,10 @@ class _PublicNavigationState extends State<PublicNavigation> {
         child: _widgetoptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-         
+           
           items: [
             BottomNavigationBarItem(
-               backgroundColor: Color(0xFF3DE07E),
+              backgroundColor: Color(0xFF3DE07E),
                 icon: Icon(
                   Icons.home,
                   color: Colors.black87,
@@ -41,17 +40,16 @@ class _PublicNavigationState extends State<PublicNavigation> {
                 label: 'Home'),
             BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.drive_eta_rounded,
+                  Icons.production_quantity_limits,
                   color: Colors.black87,
                 ),
-                label: 'Driver'),
+                label: 'Items'),
             BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.info_outlined,
+                  Icons.logout,
                   color: Colors.black87,
                 ),
-                label: 'Report'),
-          ],
+                label: 'Logout')          ],
           type: BottomNavigationBarType.shifting,
           currentIndex: _selectedIndex,
           selectedItemColor: const Color.fromARGB(255, 0, 0, 0),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_4/Public/PublicCart.dart';
+import 'package:flutter_application_4/Public/PublicNavigationbar.dart';
 import 'package:flutter_application_4/Public/publichome.dart';
 import 'package:flutter_application_4/Public/userprofile.dart';
 
@@ -20,7 +21,7 @@ class _PublicProductState extends State<PublicProduct> {
             children: [
               InkWell(onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return Public();
+                  return PublicNavigation();
                 },));
               },
                 child: Container(child: Icon(Icons.arrow_back)
@@ -90,7 +91,7 @@ class _PublicProductState extends State<PublicProduct> {
                 ),
                   InkWell(onTap: () {
                     Navigator.push(context,MaterialPageRoute(builder: (context) {
-                      return Public();
+                      return PublicNavigation();
                     },));
                   },
                     child: Container(
