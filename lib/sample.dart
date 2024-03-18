@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_4/Public/PublicNavigationbar.dart';
+import 'package:flutter_application_4/Public/PublicNotification.dart';
 import 'package:flutter_application_4/Public/registration.dart';
+import 'package:flutter_application_4/Public/userprofile.dart';
 import 'package:image_picker/image_picker.dart';
 
 class Sample extends StatefulWidget {
@@ -27,86 +29,67 @@ class _SampleState extends State<Sample> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(child: Padding(
-        padding: const EdgeInsets.only(top: 10,bottom: 30),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: Center(
-                child: Text('Add items',
-                style:TextStyle(color:Color.fromARGB(100, 20, 300, 200),
-                fontSize:30,
-                fontWeight:FontWeight.bold )),
-              ),
-            ),
-             Padding(
-                  padding: const EdgeInsets.only(top:30,bottom: 10),
-                  child: Text(' Add image form'),
-                ),
-Padding(
-  padding: const EdgeInsets.only(top: 20,right: 80,left: 80),
-  child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _imageUrl != null
-                  ? Image.network(_imageUrl!, width: 100, height: 100)
-                  : Placeholder(
-                      fallbackHeight: 100,
-                      fallbackWidth: 100,
+    return  Scaffold(
+      
+      body: Column(
+        
+        children: [
+             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                      return Userprofile();
+                    },));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.black),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child:
+                         Icon(Icons.person),
+                      ),
                     ),
-              SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.only(bottom:10),
-                child: ElevatedButton(
-                  onPressed: pickImage,
-                  child: Text('Pick Image', style: TextStyle(color:Colors.black ),),
+                  ),
                 ),
-              ),
+                Center(
+                    child: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      'picture/logo.png',
+                      width: 200,
+                      height: 200,
+                    ),
+                  ),
+                )),
+                InkWell(onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return PublicNotification();
+                  },));
+                },
+                  child: Container(child: Icon(Icons.notifications)
+                  ),
+                ),
+              ],
+            ),
+          GridView.count(
+            crossAxisCount: 2,
+            children: [
+              Image.asset('picture/basket.webp'),
+              Image.asset('picture/box.jpg'),
+              Image.asset('picture/can.jpg'),
+              Image.asset('picture/glass jar.jpg'),
             ],
           ),
-        ),
-),Container(
-                   child: Padding(
-                     padding: const EdgeInsets.only(top:0,left:80,right:80,bottom:10),
-                     child: TextFormField(
-                      decoration: InputDecoration(border:OutlineInputBorder() ,labelText: ('Price')),
-                               ),
-                   ),
-                 ),
-                  SizedBox(height:10),
-                 Container(
-                   child: Padding(
-                     padding: const EdgeInsets.only(top:0,left:80,right: 80,bottom: 10),
-                     child: TextFormField(
-                      decoration: InputDecoration(border:OutlineInputBorder() ,labelText: ('Description')),
-                               ),
-                   ),
-                 ),
-                Column(
-                 children: [
-                   Center(
-                     child: Padding(
-                       padding: const EdgeInsets.only(top: 50),
-                       child: ElevatedButton(
-                        onPressed: () {
-                           Navigator.push(context, MaterialPageRoute(
-                        builder: (context) {
-                          return PublicNavigation();
-                        },
-                      ));
-                        }, child:Text('Addimage', style: TextStyle(color:Colors.black )),
-                        
-                       ),
-                     ),
-                   )
-                 ]
-                ),
-          ],
-        ),
-      ),)
-     );
+        ],
+      ),
+    );
   }
 }

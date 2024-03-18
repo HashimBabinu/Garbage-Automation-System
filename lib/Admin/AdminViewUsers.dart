@@ -47,7 +47,7 @@ class _AdminViewUsersState extends State<AdminViewUsers> {
                     future: getData(),
                     builder: (context,snapshot) {
                       final user = snapshot.data!.docs??[];
-                      return ListView.builder(
+                      return ListView.builder( 
                           itemCount: user.length,
                           itemBuilder: (context, index) {
                             var usr = user[index].data() as Map<String,dynamic>;

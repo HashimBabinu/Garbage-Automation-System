@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_4/RecycleTeam/RecycleNavigation.dart';
+import 'package:flutter_application_4/RecycleTeam/RecycleTeamItem.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddProduct extends StatefulWidget {
@@ -25,6 +26,7 @@ class _AddProductState extends State<AddProduct> {
                         'image_url': imageUrl, //backend image picker
                         
                       });
+
                    
   }
   var Productname = TextEditingController();
@@ -126,8 +128,12 @@ class _AddProductState extends State<AddProduct> {
               children: [
                 ElevatedButton(
                     onPressed: () async {
+                      
                       await uploadImage();
                       getData();
+                      Navigator.push(context,MaterialPageRoute(builder: (context) {
+                        return AddedItem();
+                      },));
                     },
                     style: ElevatedButton.styleFrom(primary: Color(0xFF3DE07E)), 
                     child: Text(

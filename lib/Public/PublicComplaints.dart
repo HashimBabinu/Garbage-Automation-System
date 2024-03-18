@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_4/Public/PublicAddComplaint.dart';
 import 'package:flutter_application_4/Public/PublicAdminReply.dart';
@@ -11,6 +12,10 @@ class PublicComplaint extends StatefulWidget {
 }
 
 class _PublicComplaintState extends State<PublicComplaint> {
+  Future<QuerySnapshot<Map<String,dynamic>>> getData() async {//backend 
+    QuerySnapshot<Map<String,dynamic>> querySnapshot = await FirebaseFirestore.instance.collection('Complaints').get();
+    return querySnapshot;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold( 
@@ -37,54 +42,58 @@ class _PublicComplaintState extends State<PublicComplaint> {
             ],
           ),
           Expanded(
-            child: ListView.builder(
-                itemCount: 5,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Card(
-                      elevation: 5,
-                      color: Color.fromARGB(255, 35, 188, 94),
-                      child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ListTile(
-                            title: Column(
-                              
-                              children: [
-                                Row(
+            child: FutureBuilder(
+              future: getData(),
+              builder: (context,snapshot) {
+                final complaint = snapshot.data!.docs??[];
+                return ListView.builder(
+                    itemCount: complaint.length,
+                    itemBuilder: (context, index) {
+                      var compl = complaint[index].data() as Map<String,dynamic>;
+                       
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Card(
+                          elevation: 5,
+                          color: Color.fromARGB(255, 35, 188, 94),
+                          child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ListTile(
+                                title: Column(
+                                  
                                   children: [
-                                    Text(
-                                      'Daniel Vargese ',
-                                      style: TextStyle(fontStyle:FontStyle.italic),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          compl['title'],
+                                          style: TextStyle(fontStyle:FontStyle.italic),
+                                        ),
+                                      ],
                                     ),
+                                   
                                   ],
                                 ),
-                                Row(
-                                  children: [
-                                    Text('12/03/2002'),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            subtitle: 
-                                    InkWell(onTap: () {
-                                      Navigator.push(context,MaterialPageRoute(builder: (context) {
-                                        return PublicAdminReply();
-                                      },));
-                                    },
-                                      child: Text(
-                                        'I would like to report a missed waste pickup for my household located at marutha. Our scheduled pickup day was 17/03/2000, but unfortunately, the waste collection truck did not pass by our area today. We had placed our bins out on time according to the schedule provided by the municipality, but it seems they were not collected',
-                                        
+                                subtitle: 
+                                        InkWell(onTap: () {
+                                          Navigator.push(context,MaterialPageRoute(builder: (context) {
+                                            return PublicAdminReply();
+                                          },));
+                                        },
+                                          child: Text(
+                                            compl['complaint'],
                                             
-                                           
-                                      ),
-                                    ),
-                                   
-                                   
-                          )),
-                    ),                  
-                  );
-                }),
+                                                
+                                               
+                                          ),
+                                        ),
+                                       
+                                       
+                              )),
+                        ),                  
+                      );
+                    });
+              }
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
