@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_4/RecycleTeam/RecycleNavigation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Order extends StatefulWidget {
   const Order({super.key});
@@ -9,6 +10,10 @@ class Order extends StatefulWidget {
 }
 
 class _OrderState extends State<Order> {
+void getData() async {
+      SharedPreferences sp = await SharedPreferences.getInstance(); //backend user id
+ var a = sp.getString('uid');
+ }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,12 +73,7 @@ class _OrderState extends State<Order> {
                                           fontWeight: FontWeight.bold,
                                           fontStyle: FontStyle.italic),
                                     ),
-                                    Text(
-                                      'Status:',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle: FontStyle.italic),
-                                    ),
+                                    
                                   ],
                                 ),
                               ],

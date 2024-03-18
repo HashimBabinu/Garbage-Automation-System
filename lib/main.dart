@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_4/Admin/AdminApproveDriver.dart';
 import 'package:flutter_application_4/Admin/AdminApproveRecycle.dart';
@@ -36,8 +37,9 @@ import 'package:flutter_application_4/RecycleTeam/Recycleteamprofile.dart';
 import 'package:flutter_application_4/Admin/adminprofile.dart';
 import 'package:flutter_application_4/Driver/driverhome.dart';
 import 'package:flutter_application_4/Driver/driverprofile.dart';
+import 'package:flutter_application_4/firebase_options.dart';
 import 'package:flutter_application_4/login.dart';
-import 'package:flutter_application_4/Admin/loginadmin.dart';
+import 'package:flutter_application_4/Common/loginadmin.dart';
 import 'package:flutter_application_4/logindriver.dart';
 
 import 'package:flutter_application_4/HomeNavigationBar.dart';
@@ -48,11 +50,15 @@ import 'package:flutter_application_4/Driver/recycleteamindriver.dart';
 import 'package:flutter_application_4/Public/registration.dart';
 import 'package:flutter_application_4/Driver/registrationdriver.dart';
 import 'package:flutter_application_4/RecycleTeam/registrationrecycle.dart';
+import 'package:flutter_application_4/Common/loginmodule.dart';
 import 'package:flutter_application_4/sample.dart';
 import 'package:flutter_application_4/Driver/userindriver.dart';
 import 'package:flutter_application_4/Public/userprofile.dart';
 
-void main() {
+void main() async{WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
   runApp(const MyApp());
 }
 
@@ -68,9 +74,9 @@ class MyApp extends StatelessWidget {
        
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
-      ),
-      home:Pickup(),   
-      
+      ), 
+      home:AdminViewUsers(),   
+       
     );
   }
 }

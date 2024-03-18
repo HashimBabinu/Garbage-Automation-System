@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "99263444116",
+    "project_id": "garbage-automation-system",
+    "storage_bucket": "garbage-automation-system.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:99263444116:android:dcab74a6d2fe46a60eb081",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_4"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZUUH-N-E-YpaTN-Rm0DOtG6U8tY59q-w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

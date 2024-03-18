@@ -42,8 +42,8 @@ class _RecycledState extends State<Recycled> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(right: 80),
-                child: InkWell(onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                child: InkWell(onTap: () {
+                  Navigator.push(context,MaterialPageRoute(builder: (context) {
                     return DriverBio();
                   },));
                 },

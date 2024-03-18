@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_4/Public/PublicComplaints.dart';
 import 'package:flutter_application_4/Public/PublicNavigationbar.dart';
@@ -11,21 +12,24 @@ class PublicAddComplaint extends StatefulWidget {
 }
 
 class _PublicAddComplaintState extends State<PublicAddComplaint> {
+  var Complaint = TextEditingController();
+  var title=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
-         Row(
+          Row(
             children: [
-              InkWell(onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return PublicComplaint();
-                },));
-              },
-                child: Container(child: Icon(Icons.arrow_back)
-              )
-              ),
+              InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return PublicComplaint();
+                      },
+                    ));
+                  },
+                  child: Container(child: Icon(Icons.arrow_back))),
               Padding(
                 padding: const EdgeInsets.only(left: 90),
                 child: Container(
@@ -45,11 +49,13 @@ class _PublicAddComplaintState extends State<PublicAddComplaint> {
             ],
           ),
           TextFormField(
+            controller: title,
             decoration:
                 InputDecoration(border: UnderlineInputBorder(), hintText: ''),
           ),
           Text(''),
           TextFormField(
+            controller: Complaint,
             maxLines: null,
             decoration: InputDecoration(
                 border: OutlineInputBorder(), hintText: 'Add Complaint'),
@@ -60,8 +66,15 @@ class _PublicAddComplaintState extends State<PublicAddComplaint> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text('Add',style: TextStyle(color: Colors.black),),
+                  onPressed: () async {
+                    await FirebaseFirestore.instance
+                        .collection('Complaints')
+                        .add({'title':title.text,'complaint': Complaint.text});
+                  },
+                  child: Text(
+                    'Add',
+                    style: TextStyle(color: Colors.black),
+                  ),
                 ),
               ),
             ],
@@ -74,20 +87,6 @@ class _PublicAddComplaintState extends State<PublicAddComplaint> {
               ),
             ],
           ),
-//           Container(
-//   width: 200.0, 
-//   height: 100.0, 
-//   decoration: BoxDecoration(
-//     color: Color.fromARGB(255, 255, 255, 255), 
-   
-//     border: Border.all(
-//       color: Colors.black, 
-//       width: 1, 
-//     ),
-    
-//   ),
-// ),
-
         ],
       ),
     );

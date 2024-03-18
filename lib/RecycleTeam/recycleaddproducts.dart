@@ -1,5 +1,11 @@
+import 'dart:ffi';
+import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_4/RecycleTeam/RecycleNavigation.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AddProduct extends StatefulWidget {
   const AddProduct({super.key});
@@ -9,75 +15,151 @@ class AddProduct extends StatefulWidget {
 }
 
 class _AddProductState extends State<AddProduct> {
+  void getData()async{
+   
+                   //backend image picker
+                      await FirebaseFirestore.instance.collection('Product').add({
+                        'Product Name': Productname.text,
+                        'Description': descrition.text,
+                        'price': price.text,
+                        'image_url': imageUrl, //backend image picker
+                        
+                      });
+                   
+  }
+  var Productname = TextEditingController();
+  var descrition = TextEditingController();
+  var price = TextEditingController();
+  
+  var profileImage; //backend image picker
+  XFile? PickedFile;
+  String imageUrl = ''; //backend image picker
+//backend image picker
+  File? _selectedImage;
+  String? nm;
+  final picker = ImagePicker();
+
+
+ Future<void> _pickImage() async {
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickedFile != null) {
+        _selectedImage = File(pickedFile.path);
+        nm=pickedFile.name;//backend image picker
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-      body: Column(
-        children: [
-          
-           Row(
-            children: [
-              InkWell(onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return RecycleNavigation();
-                },));
-              },
-                child: Container(child: Icon(Icons.arrow_back)
-              )
-              ),
-             
-              Padding(
-                padding: const EdgeInsets.only(left: 90),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
+              children: [
+                InkWell(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return RecycleNavigation();
+                        },
+                      ));
+                    },
+                    child: Container(child: Icon(Icons.arrow_back))),
+                Padding(
+                  padding: const EdgeInsets.only(left: 90),
+                  child: Container(
+                      child: SizedBox(
+                          height: 200,
+                          width: 200,
+                          child: Image.asset('picture/logo.png'))),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                onTap: _pickImage,
                 child: Container(
-                    child: SizedBox(
-                        height: 200,
-                        width: 200,
-                        child: Image.asset('picture/logo.png'))),
+                  height: 200,
+                  width: 300,
+                  decoration: BoxDecoration(
+                   image: _selectedImage!=null ?
+                   DecorationImage(image: FileImage(_selectedImage!),
+                   fit: BoxFit.cover,
+                   
+                   ):null, 
+                    
+                    ),
+                    child: _selectedImage==null
+                    ? Icon(
+                      Icons.camera_alt,size: 40,
+                    )
+                    :null,
+                  
+                ),
               ),
-            ],
-          ),
-           Padding(
-             padding: const EdgeInsets.all(8.0),
-             child: Container(height: 200,
-             width: 300,
-               decoration: BoxDecoration(border: Border.all()
-             ),
-             child: Image.asset('picture/basket.webp'),
-             ),
-             
-           ), 
-          
-          
-          Text(''),
-          TextFormField(
-            decoration: InputDecoration(border: UnderlineInputBorder(),hintText: ('Product Name')),
-          ),
-          Text('Discription'),TextFormField(
-            decoration: InputDecoration(border: OutlineInputBorder(),hintText: ('add descrition')),
-          ),
-          Text(''),TextFormField(
-            decoration: InputDecoration(border: OutlineInputBorder(),hintText: ('add price')),
-
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              ElevatedButton(
-                                    onPressed: () {
-                                     
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        primary: Color(0xFF3DE07E)),
-                                    child: Text(
-                                      'Add',
-                                      style: TextStyle(color: Colors.black),
-                                    )),
-            ],
-          ),
-
-        ],
+            ),
+            Text(''),
+            TextFormField(
+              controller: Productname,
+              decoration: InputDecoration(
+                  border: UnderlineInputBorder(), hintText: ('Product Name')),
+            ),
+            Text('Discription'),
+            TextFormField(
+              controller: descrition,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(), hintText: ('add descrition')),
+            ),
+            Text(''),
+            TextFormField(
+              controller: price,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(), hintText: ('add price')),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                ElevatedButton(
+                    onPressed: () async {
+                      await uploadImage();
+                      getData();
+                    },
+                    style: ElevatedButton.styleFrom(primary: Color(0xFF3DE07E)), 
+                    child: Text(
+                      'Add',
+                      style: TextStyle(color: Colors.black),
+                    )),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
+  //backend image picker
+  Future<void> uploadImage() async {
+    try {
+      if (_selectedImage != null) {
+        
+        Reference storageReference = FirebaseStorage.instance
+            .ref()
+            .child('image/${nm}');
+
+        await storageReference.putFile(_selectedImage!);
+        // Get the download URL
+        imageUrl = await storageReference.getDownloadURL();
+
+        // Now you can use imageUrl as needed (e.g., save it to Firestore)
+        print('Image URL: $imageUrl');
+      }
+    } catch (e) {
+      print('Error uploading image: $e');
+    }
+  }
 }
+

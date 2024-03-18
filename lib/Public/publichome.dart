@@ -7,7 +7,7 @@ class Public extends StatefulWidget {
   const Public({super.key});
 
   @override
-  State<Public> createState() => _PublicState();
+  State<Public> createState() => _PublicState(); 
 }
 
 class _PublicState extends State<Public> {
@@ -60,7 +60,7 @@ class _PublicState extends State<Public> {
                 },
                   child: Container(child: Icon(Icons.notifications)
                   ),
-                )
+                ),
               ],
             ),
             Container(
@@ -76,6 +76,8 @@ class _PublicState extends State<Public> {
             )),
             Text(
                 '_____________________________________________________________________________'),
+                
+                
             Row(
               children: [
                 Column(

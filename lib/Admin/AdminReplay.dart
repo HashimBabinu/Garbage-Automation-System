@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_4/Admin/AdminDriverCompaints.dart';
 
@@ -9,6 +10,10 @@ class AdminReplay extends StatefulWidget {
 }
 
 class _AdminReplayState extends State<AdminReplay> {
+  void getdata()async{
+ await FirebaseFirestore.instance.collection('Reply').add({'Reply':reply.text});
+  }
+  var reply=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,14 +41,18 @@ class _AdminReplayState extends State<AdminReplay> {
           ),
               Container(child: Text('')),Padding(
             padding: const EdgeInsets.all(8.0),
-            child: TextFormField(maxLines: null,
+            child: TextFormField(
+              controller: reply,
+              maxLines: null,
               decoration:InputDecoration(hintText: ('reply'),
               border: OutlineInputBorder()),
               
             ),
           ),
           Align(alignment:Alignment.bottomRight ,
-          child: ElevatedButton(onPressed: (){},
+          child: ElevatedButton(onPressed: (){
+            getdata();
+          },
           style: ElevatedButton.styleFrom(
                               primary: Color(0xFF3DE07E)), child: Text('sent',
                               style: TextStyle(color: Colors.black),))),

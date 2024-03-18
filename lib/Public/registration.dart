@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_4/Admin/AdminHome.dart';
 import 'package:flutter_application_4/Public/PublicNavigationbar.dart';
@@ -10,6 +11,20 @@ class Registration extends StatefulWidget {
 }
 
 class _RegistrationState extends State<Registration> {
+  void getData() async{
+ await FirebaseFirestore.instance.collection('users').add({'name':user_name.text,
+ 'address':address.text,'phone number':ph_no.text,'mail id':mailid.text,'password':password.text
+  
+ });
+  }
+  var user_name=TextEditingController();
+  var address=TextEditingController();
+  var ph_no=TextEditingController();
+  var mailid=TextEditingController();
+  var password=TextEditingController();
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,9 +39,11 @@ class _RegistrationState extends State<Registration> {
           
           
           Text(''),Padding(
+            
             padding: const EdgeInsets.only(left: 30,right: 30),
             child: Container(
               child: TextFormField(
+                controller: user_name,
               decoration: InputDecoration(border:UnderlineInputBorder(),hintText: ('user_name')),
                       ),
             ),
@@ -35,6 +52,7 @@ class _RegistrationState extends State<Registration> {
             padding: const EdgeInsets.only(left: 30,right: 30),
             child: Container(
               child: TextFormField(
+                controller: address,
               decoration: InputDecoration(border:UnderlineInputBorder(),hintText: ('adress')),
                       ),
             ),
@@ -43,6 +61,7 @@ class _RegistrationState extends State<Registration> {
              padding: const EdgeInsets.only(left: 30,right: 30),
              child: Container(
                child: TextFormField(
+                controller: ph_no,
                 keyboardType: TextInputType.phone,
                 decoration:InputDecoration(border: UnderlineInputBorder(),hintText: ('ph_no')) ,
                ),
@@ -52,6 +71,7 @@ class _RegistrationState extends State<Registration> {
              padding: const EdgeInsets.only(left: 30,right: 30),
              child: Container(
                child: TextFormField(
+                controller: mailid,
                 decoration: InputDecoration(border:UnderlineInputBorder(),hintText: ('mail id')),
                ),
              ),
@@ -60,6 +80,7 @@ class _RegistrationState extends State<Registration> {
              padding: const EdgeInsets.only(left: 30,right: 30),
              child: Container(
                child: TextFormField(
+                controller: password,
                 decoration:InputDecoration(border: UnderlineInputBorder(),hintText: ('password')) ,
                ),
              ),
@@ -67,9 +88,12 @@ class _RegistrationState extends State<Registration> {
            Text('Already have account?Login',style: TextStyle(decoration: TextDecoration.underline),),
            Padding(
              padding: const EdgeInsets.only(top:200),
-             child: ElevatedButton(onPressed: (){
+             child: ElevatedButton(onPressed: () async{
+              getData();
               Navigator.push(context,MaterialPageRoute(builder: (context) {
                 return PublicNavigation();
+                
+                
               }));
              }, child:Text('SIGN UP',),),
            ),

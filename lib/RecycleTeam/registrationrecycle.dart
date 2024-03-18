@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_4/RecycleTeam/RecycleNavigation.dart';
 import 'package:flutter_application_4/RecycleTeam/recyclehome.dart';
@@ -10,6 +11,14 @@ class Registration3 extends StatefulWidget {
 }
 
 class _Registration3State extends State<Registration3> {
+  void getData()async{
+    await FirebaseFirestore.instance.collection('Recycling_Team').add({'Name':user_name.text,
+    'Phone Number': ph_no.text,'mailid':mailid.text,'password':password.text});
+  }
+  var user_name=TextEditingController();
+  var ph_no=TextEditingController();
+  var mailid=TextEditingController();
+  var password=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +34,7 @@ class _Registration3State extends State<Registration3> {
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
                   child: TextFormField(
+                    controller: user_name,
                     decoration: InputDecoration(border: UnderlineInputBorder(),hintText: ('user_name')),
                   ),
                 ),
@@ -33,6 +43,7 @@ class _Registration3State extends State<Registration3> {
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
                   child: TextFormField(
+                    controller: ph_no,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(border: UnderlineInputBorder(),hintText: ('ph_no')),
                   ),
@@ -42,6 +53,7 @@ class _Registration3State extends State<Registration3> {
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
                   child: TextFormField(
+                    controller: mailid,
                     decoration: InputDecoration(border: UnderlineInputBorder(),hintText: ('mail id')),
                   ),
                 ),
@@ -50,11 +62,13 @@ class _Registration3State extends State<Registration3> {
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
                   child: TextFormField(
+                    controller: password,
                     decoration: InputDecoration(border: UnderlineInputBorder(),hintText: ('password')),
                   ),
                 ),
               ),
               ElevatedButton(onPressed: (){
+                getData();
                 Navigator.push(context,MaterialPageRoute(builder: (context) {
                   return RecycleNavigation();
                 },));

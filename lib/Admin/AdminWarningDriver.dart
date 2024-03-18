@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_4/Admin/AdminNavigationbar.dart';
 import 'package:flutter_application_4/Admin/AdminWarningRecycle.dart';
@@ -10,6 +11,10 @@ class AdminWarningDriver extends StatefulWidget {
 }
 
 class _AdminWarningDriverState extends State<AdminWarningDriver> {
+  void getdata()async{
+    await FirebaseFirestore.instance.collection('Warning').add({'Driver Warning':warning.text});
+  }
+  var warning=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return 
@@ -85,14 +90,18 @@ class _AdminWarningDriverState extends State<AdminWarningDriver> {
           ),
           Container(child: Text('')),Padding(
             padding: const EdgeInsets.all(8.0),
-            child: TextFormField(maxLines: null,
+            child: TextFormField(//backend
+              controller: warning,
+              maxLines: null,
               decoration:InputDecoration(hintText: ('type here'),
               border: OutlineInputBorder()),
               
             ),
           ),
           Align(alignment:Alignment.bottomRight ,
-          child: ElevatedButton(onPressed: (){},
+          child: ElevatedButton(onPressed: (){
+            getdata();
+          },
           style: ElevatedButton.styleFrom(
                               primary: Color(0xFF3DE07E)), child: Text('sent',
                               style: TextStyle(color: Colors.black),))),

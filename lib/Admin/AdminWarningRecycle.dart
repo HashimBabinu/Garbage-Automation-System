@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_4/Admin/AdminNavigationbar.dart';
 import 'package:flutter_application_4/Admin/AdminWarningDriver.dart';
@@ -10,6 +11,10 @@ class AdminWarningRecycle extends StatefulWidget {
 }
 
 class _AdminWarningRecycleState extends State<AdminWarningRecycle> {
+  void getdata()async{
+    await FirebaseFirestore.instance.collection('Warning').add({'Recyccle Warning':Warningrecycle.text});
+  }
+  var Warningrecycle=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +89,9 @@ class _AdminWarningRecycleState extends State<AdminWarningRecycle> {
           ),
           Container(child: Text('')),Padding(
             padding: const EdgeInsets.all(8.0),
-            child: TextFormField(maxLines: null,
+            child: TextFormField(
+              controller: Warningrecycle,
+              maxLines: null,
               decoration:InputDecoration(hintText: ('type here'),
               
               border: OutlineInputBorder()),
@@ -92,7 +99,9 @@ class _AdminWarningRecycleState extends State<AdminWarningRecycle> {
             ),
           ),
           Align(alignment:Alignment.bottomRight ,
-          child: ElevatedButton(onPressed: (){},
+          child: ElevatedButton(onPressed: (){
+            getdata();
+          },
           style: ElevatedButton.styleFrom(
                               primary: Color(0xFF3DE07E)), child: Text('sent',
                               style: TextStyle(color: Colors.black),))),
