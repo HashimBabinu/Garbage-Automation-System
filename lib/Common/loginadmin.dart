@@ -22,7 +22,7 @@ class _Login4State extends State<Login4> {
   var password = TextEditingController();
 
   Future<void> checkDetails() async {
-    if (name.text == 'admin@gmail.com' && password.text == 'admin123') {
+    if (name.text == 'admin@gmail.com' && password.text == 'admin123') { 
       Navigator.push(context, MaterialPageRoute(
         builder: (context) {
           return AdminNavigation();

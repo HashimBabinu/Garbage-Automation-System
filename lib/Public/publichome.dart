@@ -14,6 +14,8 @@ class Public extends StatefulWidget {
 }
 
 class _PublicState extends State<Public> {
+
+  
   Future<List<DocumentSnapshot>> getData() async {
     try {
       final QuerySnapshot snapshot = await FirebaseFirestore.instance
@@ -91,33 +93,39 @@ class _PublicState extends State<Public> {
           Text(
               '_____________________________________________________________________________'),
             Expanded(
-              child: InkWell(onTap: () {
-                Navigator.push(context,MaterialPageRoute(builder: (context) {
-                  return PublicProduct();
-                },));
+              child: FutureBuilder(//backend
+              future: getData(),
+              builder: (context, AsyncSnapshot<List<DocumentSnapshot>> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                } else {
+                  List<DocumentSnapshot>? data = snapshot.data;
+                  if (data != null) {
+                    return ResponsiveGridList(
+                      desiredItemWidth: 100,
+                      minSpacing: 10,
+                      children: List.generate(data.length, (index) {
+                        String imageURL = data[index].get('image_url') ?? '';
+                        return InkWell(onTap: () {
+                          Navigator.push(context,MaterialPageRoute(builder: (context) {
+                            return PublicProduct( img:imageURL,name:data[0]['Product Name'],
+                des:data[0]['Description'],
+                price:data[0]['price']);
+                          },));
+                        },child:
+                        
+                        
+                         Image.network(imageURL));
+                      }).toList(),
+                    );
+                  } else {
+                    return Center(child: Text('No data available.'));
+                  }
+                }
               },
-                child: FutureBuilder(
-                  future:getData() ,
-                  builder: (context,AsyncSnapshot<List<DocumentSnapshot>> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          } else {
-            return ResponsiveGridList(
-                            desiredItemWidth: 100,
-                            minSpacing: 10,
-                            children: List.generate(snapshot.data?.length ?? 0, (index)=> index+1).map((i) {
-                              return Image.asset('picture/stick note.png');
-                              
-                            }).toList()
-                          
-                          
-                        );
-                  }
-                  }
-                ),
-              ),
+                            ),
             )
               
                    ],

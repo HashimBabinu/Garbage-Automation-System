@@ -47,6 +47,11 @@ class _AdminViewUsersState extends State<AdminViewUsers> {
                     future: getData(),
                     builder: (context,snapshot) {
                       final user = snapshot.data!.docs??[];
+                       if (snapshot.connectionState == ConnectionState.waiting) {//eooro maran
+            return Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
+          }//
                       return ListView.builder( 
                           itemCount: user.length,
                           itemBuilder: (context, index) {
