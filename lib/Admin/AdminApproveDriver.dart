@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_4/Admin/AdminHome.dart';
 import 'package:flutter_application_4/Admin/AdminNavigationbar.dart';
@@ -10,6 +11,10 @@ class ApproveDriver extends StatefulWidget {
 }
 
 class _ApproveDriverState extends State<ApproveDriver> {
+  Future<QuerySnapshot<Map<String,dynamic>>> getData() async {//backend
+    QuerySnapshot<Map<String,dynamic>> querySnapshot = await FirebaseFirestore.instance.collection('Driver').get();
+    return querySnapshot;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,47 +41,55 @@ class _ApproveDriverState extends State<ApproveDriver> {
             ],
           ),
           Expanded(
-            child: ListView.builder(
-                itemCount: 1,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Card(
-                      elevation: 5,
-                      color: Color.fromARGB(255, 35, 188, 94),
-                      child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ListTile(
-                            title: Text(
-                              'Dileep',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            subtitle: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Column(
+            child: FutureBuilder(
+              future: getData(),
+              builder: (context,snapshot) {
+                 final driver = snapshot.data!.docs??[];//
+                return ListView.builder(
+                     itemCount: driver.length,
+                     
+                    itemBuilder: (context, index) {
+                      final Map<String, dynamic> driverData = driver[index].data() as Map<String, dynamic>;
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Card(
+                          elevation: 5,
+                          color: Color.fromARGB(255, 35, 188, 94),
+                          child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ListTile(
+                                title: Text(
+                                  driverData['Name'],
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                subtitle: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    Text('999999999999',
-                                        style: TextStyle(
-                                            fontStyle: FontStyle.italic,
-                                            fontWeight: FontWeight.w600)),
-                                    Text('username@gmail.com',
-                                        style: TextStyle(
-                                            fontStyle: FontStyle.italic)),
+                                    Column(
+                                      children: [
+                                        Text( driverData['Phone Number'],
+                                            style: TextStyle(
+                                                fontStyle: FontStyle.italic,
+                                                fontWeight: FontWeight.w600)),
+                                        Text( driverData['mailid'],
+                                            style: TextStyle(
+                                                fontStyle: FontStyle.italic)),
+                                      ],
+                                    ),
                                   ],
                                 ),
-                              ],
-                            ),
-                            trailing: Column(
-                              children: [
-                                Icon(Icons.task_alt),
-                                Icon(Icons.close),
-                              ],
-                            ),
-                          )),
-                    ),
-                  );
-                }),
+                                trailing: Column(
+                                  children: [
+                                    Icon(Icons.task_alt),
+                                    Icon(Icons.close),
+                                  ],
+                                ),
+                              )),
+                        ),
+                      );
+                    });
+              }
+            ),
           ),
         ],
       ),

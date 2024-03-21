@@ -20,7 +20,7 @@ class _OrderVerifiedState extends State<OrderVerified> {
             children: [
               InkWell(onTap: () {
                 Navigator.push(context,MaterialPageRoute(builder: (context) {
-                  return PublicCart();
+                  return PublicCart(imageUrl: '', name: null, productId: '', productName: '',);
                 },));
               },
                 child: Stack(

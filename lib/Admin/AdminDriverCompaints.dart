@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_4/Admin/AdminNavigationbar.dart';
 import 'package:flutter_application_4/Admin/AdminRecycleComplaints.dart';
@@ -11,6 +12,10 @@ class DriverComplaints extends StatefulWidget {
 }
 
 class _DriverComplaintsState extends State<DriverComplaints> {
+   Future<QuerySnapshot<Map<String,dynamic>>> getData() async {//backend 
+    QuerySnapshot<Map<String,dynamic>> querySnapshot = await FirebaseFirestore.instance.collection('Complaints').get();
+    return querySnapshot;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,46 +88,53 @@ class _DriverComplaintsState extends State<DriverComplaints> {
             ],
           ),
           Expanded(
-            child: ListView.builder(
-                itemCount: 3,
-                itemBuilder: (context, index) {
-                  
-                  return Card(
-                    elevation: 5,
-                    color: Color.fromARGB(255, 255, 255, 255),
-                    child: Container(
-                      child: Padding(
-                        padding: const EdgeInsets.all(18.0),
-                        child: Column(
-                          children: [
-                            Text(
-                                'I would like to report a missed waste pickup for my household located at marutha. Our scheduled pickup day was 17/03/2000, but unfortunately, the waste collection truck did not pass by our area today. We had placed our bins out on time according to the schedule provided by the municipality, but it seems they were not collected'),
-                           SizedBox(height: 20,),
-                           Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(context,MaterialPageRoute(builder: (context) {
-                                    return AdminReplay();
-                                  },));
-                                },
-                                style: ElevatedButton.styleFrom(
-                                    primary: Color(0xFF3DE07E)),
-                                child: Text(
-                                  'Reply',
-                                  style: TextStyle(color: Colors.black),
-                                )),
-                          ],
-                        ),
-                          ],
-                        ),
-                      ),
+            child: FutureBuilder(
+              future: getData(),
+
+              builder: (context,snapshot) {
+                final complaint = snapshot.data!.docs??[];
+                return ListView.builder(
+                    itemCount:  complaint.length,
+                    itemBuilder: (context, index) {
+                       var compl = complaint[index].data() as Map<String,dynamic>;
                       
-                    
-                    ),
-                  );
-                }),
+                      return Card(
+                        elevation: 5,
+                        color: Color.fromARGB(255, 255, 255, 255),
+                        child: Container(
+                          child: Padding(
+                            padding: const EdgeInsets.all(18.0),
+                            child: Column(
+                              children: [
+                                Text( compl['title'],),
+                               SizedBox(height: 20,),
+                               Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(context,MaterialPageRoute(builder: (context) {
+                                        return AdminReplay();
+                                      },));
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        primary: Color(0xFF3DE07E)),
+                                    child: Text(
+                                      'Reply',
+                                      style: TextStyle(color: Colors.black),
+                                    )),
+                              ],
+                            ),
+                              ],
+                            ),
+                          ),
+                          
+                        
+                        ),
+                      );
+                    });
+              }
+            ),
           ),
         ],
       ),

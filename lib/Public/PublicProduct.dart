@@ -16,6 +16,7 @@ class PublicProduct extends StatefulWidget {
 }
 
 class _PublicProductState extends State<PublicProduct> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +81,7 @@ class _PublicProductState extends State<PublicProduct> {
                 children: [
                   InkWell(onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) {
-                      return PublicCart();
+                      return PublicCart(imageUrl: widget.img, name: null, productId: '', productName: '',);
                     },));
                   },
                     child: Container(

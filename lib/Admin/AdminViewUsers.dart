@@ -12,7 +12,7 @@ class AdminViewUsers extends StatefulWidget {
 }
 
 class _AdminViewUsersState extends State<AdminViewUsers> {
-  Future<QuerySnapshot<Map<String,dynamic>>> getData() async {//backend 
+  Future<QuerySnapshot<Map<String,dynamic>>> getData() async {//backend
     QuerySnapshot<Map<String,dynamic>> querySnapshot = await FirebaseFirestore.instance.collection('users').get();
     return querySnapshot;
   }
